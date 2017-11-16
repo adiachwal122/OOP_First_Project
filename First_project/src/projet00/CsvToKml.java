@@ -85,7 +85,7 @@ public class CsvToKml {
 				while(line!=null) {
 					if(Integer.parseInt( tempArr[keyIndex.get(title.trim())] ) > 1){
 						//Print more then one wifi spot
-						for (int i = 1; i < Integer.parseInt( tempArr[keyIndex.get("WiFi networks")]+1 ); i++) {
+						for (int i = 1; i < Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ); i++) {
 							if(tempArr[keyIndex.get(title.trim() + " " + i)].trim().equalsIgnoreCase(parameter.trim())) {
 								makeFile.write(" <Placemark>\r\n" +  "<name>\r\n" + tempArr[keyIndex.get("ID")] + "</name>" 
 										+ "	<description><![CDATA[" + " SSID: " + tempArr[keyIndex.get("SSID " + i)] 
@@ -168,7 +168,7 @@ try {
 				tempArr = line.split(" , ");
 				if(Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ) > 1) {
 					//Print more then one wifi spot
-					for (int i = 1; i < Integer.parseInt( tempArr[keyIndex.get("WiFi networks")]+1 ); i++) {
+					for (int i = 1; i < Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ); i++) {
 						makeFile.write(" <Placemark>\r\n" +  "<name>\r\n" + tempArr[keyIndex.get("ID")] + "</name>" 
 								+ "	<description><![CDATA[" + " SSID: " + tempArr[keyIndex.get("SSID " + i)] 
 										+ " MAC: "  + tempArr[keyIndex.get("MAC " + i)] + 

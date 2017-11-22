@@ -12,14 +12,12 @@ public class WriteCsv {
 		
 		this._fileTable = null;
 	}
-
 	
 	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException {
 		try {
 			BufferedWriter makeFile = new BufferedWriter(new FileWriter("final_csv.csv"));
 			String [] firstHeader = {"Time", "ID", "Lat", "Lon", "Alt", "WiFi networks"},
 					secondHeader = {"SSID", "MAC", "Frequncy", "Signal"};
-
 			//First required titles
 			for (String newHeader : firstHeader) {
 				makeFile.write(newHeader + " , ");
@@ -31,7 +29,6 @@ public class WriteCsv {
 				}
 			}
 			makeFile.newLine();
-
 			//Write to file
 			if(this._fileTable.size() != 0) {
 				for (List<Network> runList: this._fileTable) {
@@ -59,18 +56,13 @@ public class WriteCsv {
 						}
 						makeFile.newLine();
 					}
-
 				}
-
 			}
-
 			//close session
 			makeFile.close();
 		}catch(IndexOutOfBoundsException | IOException e) {
 			System.err.println(e.getMessage());
 			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
-
 	}
-
 }

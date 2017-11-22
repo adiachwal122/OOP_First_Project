@@ -114,9 +114,7 @@ public class ReadCsv {
 	public void kmlToCsv(String kmlPath) {
 
 	}
-
 	/**
-	 * 
 	 * Order the csv  
 	 * @throws IOException 
 	 */
@@ -224,7 +222,6 @@ public class ReadCsv {
 		}
 	}
 
-	
 	//Check of file type 
 	public String fileType (String filePath) {
 		//Cut the type from file (exemple: txt)

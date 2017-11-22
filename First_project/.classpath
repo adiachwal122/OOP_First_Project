@@ -6,5 +6,6 @@
 	<classpathentry exported="true" kind="lib" path="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions/JavaAPIforKml-2.2.1.jar" sourcepath="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions"/>
 	<classpathentry exported="true" kind="lib" path="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions/JavaAPIforKml-2.2.1-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions/JavaAPIforKml-2.2.1-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="/jaxb-impl-2.2-promoted-b65"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

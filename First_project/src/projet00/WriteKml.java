@@ -36,46 +36,6 @@ public class WriteKml {
 	 */
 
 	public WriteKml(List<String []> kmlList ,HashMap<String, Integer> keyIndex){
-		/*try {
-		// The all encapsulating kml element.
-		Kml kml = KmlFactory.createKml();
-		for (String[] list : kmlList) {
-			if(list != null){
-				//Document doc = KmlFactory.createDocument();
-				
-				// Create <Placemark> and set values.
-				Placemark placemark = KmlFactory.createDocument().withName(list[keyIndex.get("SSID")]).createAndAddPlacemark();
-				//doc.addToFeature(placemark);
-				placemark.setName(list[keyIndex.get("SSID")]);
-				placemark.setId(list[keyIndex.get("ID")]);
-				placemark.setVisibility(true);
-				placemark.setOpen(false);
-				placemark.setDescription("MAC: " + list[keyIndex.get("MAC")] +
-						"\nFrequncy: " + list[keyIndex.get("Frequncy")] + 
-						"\nSignal: " + list[keyIndex.get("Signal")]);
-				placemark.createAndSetTimeStamp().withWhen(list[keyIndex.get("Time")]);
-
-				// Create <Point> and set values.
-				Point point = KmlFactory.createPoint();
-				point.setExtrude(false);
-				//point.setAltitudeMode(AltitudeMode.fromValue(list[keyIndex.get("Alt")]));
-				// Add <coordinates>9.444652669565212,51.30473589438118,0<coordinates>.
-				point.getCoordinates().add(new Coordinate(list[keyIndex.get("Lon")] + ","
-						+ list[keyIndex.get("Lat")] + ","
-						+ list[keyIndex.get("Alt")]));
-				
-				placemark.setGeometry(point);      // <-- point is registered at placemark ownership.
-				kml.setFeature(placemark);         // <-- placemark is registered at kml ownership.
-			}
-		}
-
-		kml.marshal(new File("KmlFile.kml"));
-		System.out.println("Kml created!!");
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  */ 
 		try {
 			List<String []> listOfNet = kmlList;
 			final Kml writekml = new Kml();

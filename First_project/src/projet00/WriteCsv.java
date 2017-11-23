@@ -15,6 +15,7 @@ public class WriteCsv {
 	
 	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException {
 		try {
+			this._fileTable = csvList;
 			BufferedWriter makeFile = new BufferedWriter(new FileWriter("final_csv.csv"));
 			String [] firstHeader = {"Time", "ID", "Lat", "Lon", "Alt", "WiFi networks"},
 					secondHeader = {"SSID", "MAC", "Frequncy", "Signal"};
@@ -34,7 +35,7 @@ public class WriteCsv {
 				for (List<Network> runList: this._fileTable) {
 					int count = 0;
 					if(runList != null) {
-						if(runList.size() >= 10) {
+						if(runList.size() > 10) {
 							makeFile.write(runList.get(0).getTime() + " , " + runList.get(0).getId() + " , "
 									+runList.get(0).getLat() + " , " + runList.get(0).getLon() + " , "
 									+ runList.get(0).getAlt() + " , " + 10);
@@ -44,7 +45,7 @@ public class WriteCsv {
 									+ runList.get(0).getAlt() + " , " + runList.size());
 						}
 						for (Network network : runList) {
-							if(count >10) break;
+							if(count >=10) break;
 							if(runList.size() <= 10 ) {
 								makeFile.write( " , " + network.getSsid() + " , " + network.getMac() + " , " 
 										+ network.getFrequncy() + " , " + network.getSignal());

@@ -81,7 +81,6 @@ public class ReadCsv {
 					else unauthorizedFile(filesInFolder.get(0).getName());
 
 					filesInFolder.remove(0);
-
 				}
 			}
 		}
@@ -106,14 +105,6 @@ public class ReadCsv {
 		}
 	}
 
-	/**
-	 * Kml to csv for future devl
-	 * @param kmlPath
-	 * https://labs.micromata.de/projects/jak/kml-in-the-java-world.html
-	 */
-	public void kmlToCsv(String kmlPath) {
-
-	}
 	/**
 	 * Order the csv  
 	 * @throws IOException 
@@ -220,6 +211,10 @@ public class ReadCsv {
 			System.err.println(e.getMessage());
 			System.err.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
+	}
+
+	public List<List<Network>> get_fileTable() {
+		return _fileTable;
 	}
 
 	//Check of file type 

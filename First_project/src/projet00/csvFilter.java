@@ -1,5 +1,4 @@
 package projet00;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.xml.transform.Templates;
 
 public class csvFilter {
 	private HashMap<String, Integer> keyIndex;
@@ -83,15 +84,13 @@ public class csvFilter {
 	//Print all file
 	public void All(String file) throws IOException {
 		try {
-
-
 			//Read file
 			FileReader readFile = new FileReader(file);
 			BufferedReader fileOpen = new BufferedReader(readFile);
 
 			//Title index
 			this.keyIndex = new HashMap<String,Integer>();
-
+			this.file = new  ArrayList <String []> ();
 			String line = fileOpen.readLine();
 
 			String[] tempArr = line.split(" , ");
@@ -106,28 +105,17 @@ public class csvFilter {
 			line = fileOpen.readLine();
 			while(line != null) {
 				tempArr = line.split(" , ");
-				if(Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ) > 1) {
-					//Print more then one wifi spot
-					for (int i = 1; i <= Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ); i++) {
-						temp = new String[]{ tempArr[keyIndex.get("Time")], tempArr[keyIndex.get("ID")], 
-								tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
-								tempArr[keyIndex.get("SSID " + i)], tempArr[keyIndex.get("MAC " + i)], 
-								tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
-						if (temp != null) this.file.add(temp);
-					}
-				}else {
-					//Only One Spot
-					tempArr = line.split(" , ");
+
+				//Prints wifi spot
+				for (int i = 1; i <= Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ); i++) {
 					temp = new String[]{ tempArr[keyIndex.get("Time")], tempArr[keyIndex.get("ID")], 
 							tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
-							tempArr[keyIndex.get("SSID " + 1)], tempArr[keyIndex.get("MAC " + 1)], 
-							tempArr[keyIndex.get("Frequncy " + 1)], tempArr[keyIndex.get("Signal " + 1)]};
+							tempArr[keyIndex.get("SSID " + i)], tempArr[keyIndex.get("MAC " + i)], 
+							tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
 					if (temp != null) this.file.add(temp);
+					line = fileOpen.readLine();
 				}
-				line = fileOpen.readLine();
 			}
-
-
 			fileOpen.close();
 		}
 		catch(IOException e){
@@ -145,6 +133,7 @@ public class csvFilter {
 
 			//Title index
 			HashMap<String, Integer>keyIndex = new HashMap<String,Integer>();
+			this.file = new  ArrayList <String []> ();
 
 			String line = fileOpen.readLine();
 
@@ -161,8 +150,7 @@ public class csvFilter {
 			//Print file by ID
 			while(line != null) {
 				tempArr = line.split(" , ");
-				if(Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ) > 1){
-					//Print more then one wifi spot
+					//Prints wifi spot
 					if(tempArr[keyIndex.get(ID.trim())] != null 
 							&& tempArr[keyIndex.get(ID.trim())].trim().equalsIgnoreCase(parameter.trim())) {
 						for (int i = 1; i <= Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ); i++) {
@@ -170,20 +158,10 @@ public class csvFilter {
 									tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
 									tempArr[keyIndex.get("SSID " + i)], tempArr[keyIndex.get("MAC " + i)], 
 									tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
+							if (temp != null) this.file.add(temp);
 						}
 					}
-				}else {
-					//Only one wifi spot
-					if(tempArr[keyIndex.get(ID.trim())] != null 
-							&& tempArr[keyIndex.get(ID.trim())].trim().equalsIgnoreCase(parameter.trim())) {
-						temp = new String[]{ tempArr[keyIndex.get("Time")], tempArr[keyIndex.get("ID")], 
-								tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
-								tempArr[keyIndex.get("SSID " + 1)], tempArr[keyIndex.get("MAC " + 1)], 
-								tempArr[keyIndex.get("Frequncy " + 1)], tempArr[keyIndex.get("Signal " + 1)]};
-					}
-				}
 				line = fileOpen.readLine();
-				if (temp != null) this.file.add(temp);
 			}
 			fileOpen.close();
 		}catch (IOException e) {
@@ -193,17 +171,18 @@ public class csvFilter {
 	}
 	//Filter by Time
 	public void filterByTime(String file, String start, String end)throws IOException{
-        try {
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		try {
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 			Date startTime =  df.parse(start.trim());
 			Date endTime = df.parse(end.trim());
-			
+
 			//Read file
 			FileReader readFile = new FileReader(file);
 			BufferedReader fileOpen = new BufferedReader(readFile);
 
 			//Title index
 			HashMap<String, Integer>keyIndex = new HashMap<String,Integer>();
+			this.file = new  ArrayList <String []> ();
 
 			String line = fileOpen.readLine();
 
@@ -220,35 +199,22 @@ public class csvFilter {
 			//Print file by ID
 			while(line != null) {
 				tempArr = line.split(" , ");
-				if(Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ) > 1){
 					//Print more then one wifi spot
 					if(tempArr[keyIndex.get("Time")] != null ) {
 						Date timeToCompare = df.parse(tempArr[keyIndex.get("Time")].trim());
-		
 						if(( timeToCompare.after(startTime) && timeToCompare.before(endTime) ) 
-								|| ( timeToCompare.equals(startTime) && timeToCompare.equals(endTime) ))
+								|| ( timeToCompare.equals(startTime) || timeToCompare.equals(endTime) ))
 							for (int i = 1; i <= Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ); i++) {
 								temp = new String[]{ tempArr[keyIndex.get("Time")], tempArr[keyIndex.get("ID")], 
 										tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
 										tempArr[keyIndex.get("SSID " + i)], tempArr[keyIndex.get("MAC " + i)], 
 										tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
+								if (temp != null) this.file.add(temp);
+
 							}
-						}
-					}else {
-						//Only one wifi spot
-						if(tempArr[keyIndex.get("Time")] != null ) {
-							Date timeToCompare = df.parse(tempArr[keyIndex.get("Time")].trim());
-							if(( timeToCompare.after(startTime) && timeToCompare.before(endTime) ) 
-									|| ( timeToCompare.equals(startTime) && timeToCompare.equals(endTime) ))
-								temp = new String[]{ tempArr[keyIndex.get("Time")], tempArr[keyIndex.get("ID")], 
-										tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
-										tempArr[keyIndex.get("SSID " + 1)], tempArr[keyIndex.get("MAC " + 1)], 
-										tempArr[keyIndex.get("Frequncy " + 1)], tempArr[keyIndex.get("Signal " + 1)]};
-						}
 					}
 				line = fileOpen.readLine();
-				if (temp != null) this.file.add(temp);
-				}
+			}
 			fileOpen.close();
 
 		} catch (ParseException e) {
@@ -256,17 +222,21 @@ public class csvFilter {
 		}catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
-      
+
 	}
-	
+
 	public HashMap<String, Integer> getKeyIndex() {
-		for (int i = 2; i < 11; i++) {
-			this.keyIndex.remove("SSID " + i);
-			this.keyIndex.remove("Frequncy " + i);
-			this.keyIndex.remove("MAC " + i);
-			this.keyIndex.remove("Signal " + i);
-		}  
-		return keyIndex;
+		HashMap<String, Integer> newKeys= new HashMap<>();
+		newKeys.put("Time",0);
+		newKeys.put("ID" , 1);
+		newKeys.put("Lat" , 2);
+		newKeys.put("Lon" , 3);
+		newKeys.put("Alt" , 4);
+		newKeys.put("SSID" , 5);
+		newKeys.put("MAC" , 6);
+		newKeys.put("Frequncy" , 7);
+		newKeys.put("Signal" , 8);
+		return newKeys;
 	}
 
 	public List<String[]> getFile() {

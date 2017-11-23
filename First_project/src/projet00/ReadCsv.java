@@ -16,16 +16,7 @@ import java.util.stream.Collectors;
 
 import static java.nio.file.StandardCopyOption.*;
 
-/**
- * 
- * @author Adiel
- * @since 29/10/2017 
- * @see:
- *      *https://www.tutorialspoint.com/java/io/file_listfiles.htm
- *      *http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
- *      *https://labs.micromata.de/projects/jak/implementing.html
- * 
- */
+
 
 public class ReadCsv {
 
@@ -38,7 +29,16 @@ public class ReadCsv {
 		System.err.println("No path selected!");
 	}
 
-	//Selecting treatment type
+	/**
+	 * 
+	 * @author adiel, adi and yuda
+	 * @param path
+	 * @return list of csv file
+	 * @see https://www.tutorialspoint.com/java/io/file_listfiles.htm
+	 * @see http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
+	 * 
+	 * 
+	 */
 	public ReadCsv(String path) throws IOException {
 		try {
 			/**
@@ -89,7 +89,12 @@ public class ReadCsv {
 		}
 	}
 
-	//Csv input
+	/**
+	 * 
+	 * @param csvPath
+	 * @return copy csv file to workspace
+	 * 
+	 */
 	public void csvInput(String csvPath) throws IOException {
 		try {
 			File input_csv = new File (csvPath);
@@ -104,9 +109,10 @@ public class ReadCsv {
 			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
 	}
-
+	
 	/**
-	 * Order the csv  
+	 * @param path
+	 * @return list of csv file
 	 * @throws IOException 
 	 */
 	public void getOrder(String path) throws IOException{
@@ -212,12 +218,22 @@ public class ReadCsv {
 			System.err.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
 	}
-
+	/**
+	 * 
+	 * @param _fileTable
+	 * @return List<List<Network>>
+	 * 
+	 */
 	public List<List<Network>> get_fileTable() {
 		return _fileTable;
 	}
 
-	//Check of file type 
+	/**
+	 * 
+	 * @param filePath
+	 * @return type of file
+	 * 
+	 */
 	public String fileType (String filePath) {
 		//Cut the type from file (exemple: txt)
 		int length = filePath.length()-3;

@@ -12,17 +12,19 @@ import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Point;
 
 public class WriteKml {
-	/**
-	 * Learned from:
-	 *  https://labs.micromata.de/projects/jak/kml-in-the-java-world.html
-	 * Creat Kml file
-	 * @param KmlPath
-	 */
+	
 
 	public WriteKml() {
 
 	}
 
+	/**
+	 * @author adiel ,adi and yuda
+	 * @param kmlList
+	 * @param keyIndex
+	 * {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
+	 * @return Kml file
+	 */
 	public WriteKml(List<String []> kmlList ,HashMap<String, Integer> keyIndex){
 		try {
 		// The all encapsulating kml element.
@@ -55,7 +57,6 @@ public class WriteKml {
 				kml.setFeature(placemark);         // <-- placemark is registered at kml ownership.
 			}
 		}
-		kml.setFeature(placemark);         // <-- placemark is registered at kml ownership.
 
 		kml.marshal(new File("KmlFile.kml"));
 		System.out.println("Kml created!!");

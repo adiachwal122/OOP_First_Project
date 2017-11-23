@@ -8,12 +8,20 @@ import java.util.List;
 public class WriteCsv {
 	private List<List<Network>> _fileTable;
 	
+	/**
+	 * @author adiel ,adi and yuda
+	 */
 	public WriteCsv(){
 		
 		this._fileTable = null;
 	}
 	
-	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException {
+	/**
+	 * @author adiel ,adi and yuda
+	 * @param csvList
+	 * @return csv file
+	 */
+	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException  {
 		try {
 			this._fileTable = csvList;
 			BufferedWriter makeFile = new BufferedWriter(new FileWriter("final_csv.csv"));
@@ -61,7 +69,7 @@ public class WriteCsv {
 			}
 			//close session
 			makeFile.close();
-		}catch(IndexOutOfBoundsException | IOException e) {
+		}catch(IndexOutOfBoundsException | IOException | NullPointerException e) {
 			System.err.println(e.getMessage());
 			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}

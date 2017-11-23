@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:kml xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:ns2="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+    <ns2:Placemark id="ONEPLUS A3003">
+        <ns2:name>Migdal_WiFi</ns2:name>
+        <ns2:visibility>1</ns2:visibility>
+        <ns2:open>0</ns2:open>
+        <ns2:description>MAC: 04:bd:88:a2:15:60
+Frequncy: 1
+Signal: -85</ns2:description>
+        <ns2:TimeStamp>
+            <ns2:when>28/10/2017 20:17</ns2:when>
+        </ns2:TimeStamp>
+        <ns2:Point>
+            <ns2:extrude>0</ns2:extrude>
+            <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
+        </ns2:Point>
+    </ns2:Placemark>
+</ns2:kml>

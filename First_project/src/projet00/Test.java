@@ -14,7 +14,7 @@ import de.micromata.opengis.kml.v_2_2_0.Point;
 public class Test {
 
 	public static void main(String[] args) throws IOException {
-		ReadCsv temp = new ReadCsv("28.10\\WigleWifi_20171028203300.csv");
+		ReadCsv temp = new ReadCsv("Test\\WigleWifi_20171028203300.csv");
 		WriteCsv test = new WriteCsv(temp.get_fileTable());
 		csvFilter adi = new csvFilter();
 		adi.filterByTime("final_csv.csv", "28/10/2017 20:15", "28/10/2017 20:17");

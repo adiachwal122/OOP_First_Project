@@ -21,7 +21,12 @@ public class csvFilter {
 		this.file = null;
 	}
 
-	//Filter by MAC and SSID
+	/**
+	 * @author adiel ,adi and yuda
+	 * @category Filter by MAC and SSID
+	 * @param file , MACorSSID , parameter
+	 * @return list
+	 */
 	public void filterByMACorSSID(String file, String MACorSSID, String parameter) throws NumberFormatException, IOException {
 
 		try {
@@ -81,7 +86,12 @@ public class csvFilter {
 		}
 	}
 
-	//Print all file
+	/**
+	 * @author adiel ,adi and yuda
+	 * @category Print all file
+	 * @param file 
+	 * @return list
+	 */
 	public void All(String file) throws IOException {
 		try {
 			//Read file
@@ -124,7 +134,12 @@ public class csvFilter {
 		}
 	}
 
-	//Filter by ID 
+	/**
+	 * @author adiel ,adi and yuda
+	 * @category Filter by ID 
+	 * @param file , ID , parameter
+	 * @return list
+	 */
 	public void filterByID(String file, String ID, String parameter) throws NumberFormatException, IOException {
 		try {
 			//Read file
@@ -169,7 +184,13 @@ public class csvFilter {
 
 		}
 	}
-	//Filter by Time
+	
+	/**
+	 * @author adiel ,adi and yuda
+	 * @category Filter by Time 
+	 * @param file , start , end
+	 * @return list
+	 */
 	public void filterByTime(String file, String start, String end)throws IOException{
 		try {
 			DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -219,12 +240,16 @@ public class csvFilter {
 
 		} catch (ParseException e) {
 			System.err.println(e.getMessage());
-		}catch (IOException e) {
+		}catch (IOException | NullPointerException e) {
 			System.err.println(e.getMessage());
 		}
 
 	}
 
+	/**
+	 * @author adiel ,adi and yuda
+	 * @return update keyIndex
+	 */
 	public HashMap<String, Integer> getKeyIndex() {
 		HashMap<String, Integer> newKeys= new HashMap<>();
 		newKeys.put("Time",0);
@@ -239,6 +264,11 @@ public class csvFilter {
 		return newKeys;
 	}
 
+
+	/**
+	 * @author adiel ,adi and yuda
+	 * @return file
+	 */
 	public List<String[]> getFile() {
 		return file;
 	}

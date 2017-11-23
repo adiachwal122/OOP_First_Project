@@ -8,7 +8,11 @@ public class Network {
 
 	public Network() {
 	}
-//	"Time", "ID", "Lat", "Lon", "Alt", "WiFi networks"
+	
+	/*
+	 * @author adiel ,adi and yuda
+	 * @param Ssid, Mac, Frequncy, Signal, Time, Id, Lat, Lon, Alt
+	 */
 	public Network(String nSsid, String nMac, int nFrequncy, int nSignal, 
 			String nTime,String nId, String nLat, String nLon, String nAlt) {
 		this.mac = nMac;

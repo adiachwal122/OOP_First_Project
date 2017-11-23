@@ -11,11 +11,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class csvFilter {
+public class Filtered {
 	private HashMap<String, Integer> keyIndex;
 	private List<String []> file;
 
-	public csvFilter() {
+public Filtered() {
 		this.keyIndex = null;
 		this.file = null;
 	}

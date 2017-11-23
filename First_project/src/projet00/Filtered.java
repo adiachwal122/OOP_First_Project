@@ -11,15 +11,35 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Filtered.
+ */
 public class Filtered {
+	
+	/** The key index. */
 	private HashMap<String, Integer> keyIndex;
+	
+	/** The file. */
 	private List<String []> file;
 
+/**
+ * Instantiates a new filtered.
+ */
 public Filtered() {
 		this.keyIndex = null;
 		this.file = null;
 	}
 
+	/**
+	 * Filter by MA cor SSID.
+	 *
+	 * @param file the file
+	 * @param MACorSSID the MA cor SSID
+	 * @param parameter the parameter
+	 * @throws NumberFormatException the number format exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	//Filter by MAC and SSID
 	public void filterByMACorSSID(String file, String MACorSSID, String parameter) throws NumberFormatException, IOException {
 
@@ -82,6 +102,12 @@ public Filtered() {
 		}
 	}
 
+	/**
+	 * All.
+	 *
+	 * @param file the file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	//Print all file
 	public void All(String file) throws IOException {
 		try {
@@ -141,6 +167,15 @@ public Filtered() {
 		}
 	}
 
+	/**
+	 * Filter by ID.
+	 *
+	 * @param file the file
+	 * @param ID the id
+	 * @param parameter the parameter
+	 * @throws NumberFormatException the number format exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	//Filter by ID 
 	public void filterByID(String file, String ID, String parameter) throws NumberFormatException, IOException {
 		try {
@@ -198,6 +233,15 @@ public Filtered() {
 
 		}
 	}
+	
+	/**
+	 * Filter by time.
+	 *
+	 * @param file the file
+	 * @param start the start
+	 * @param end the end
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	//Filter by Time
 	public void filterByTime(String file, String start, String end)throws IOException{
         try {
@@ -268,6 +312,11 @@ public Filtered() {
       
 	}
 	
+	/**
+	 * Gets the key index.
+	 *
+	 * @return the key index
+	 */
 	public HashMap<String, Integer> getKeyIndex() {
 		for (int i = 2; i < 11; i++) {
 			this.keyIndex.remove("SSID " + i);
@@ -278,6 +327,11 @@ public Filtered() {
 		return keyIndex;
 	}
 
+	/**
+	 * Gets the file.
+	 *
+	 * @return the file
+	 */
 	public List<String[]> getFile() {
 		return file;
 	}

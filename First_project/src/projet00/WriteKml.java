@@ -11,18 +11,26 @@ import de.micromata.opengis.kml.v_2_2_0.KmlFactory;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Point;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WriteKml.
+ */
 public class WriteKml {
 	
 
+	/**
+	 * Instantiates a new write kml.
+	 */
 	public WriteKml() {
 
 	}
 
 	/**
+	 * Instantiates a new write kml.
+	 *
 	 * @author adiel ,adi and yuda
-	 * @param kmlList
-	 * @param keyIndex
-	 * {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
+	 * @param kmlList the kml list
+	 * @param keyIndex {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
 	 * @return Kml file
 	 */
 	public WriteKml(List<String []> kmlList ,HashMap<String, Integer> keyIndex){
@@ -92,6 +100,11 @@ public class WriteKml {
 		}*/
 	}
 	
+	/**
+	 * Unauthorized file.
+	 *
+	 * @param unauthorizedFile the unauthorized file
+	 */
 	//Check if file type is unauthorized 
 	public void unauthorizedFile(String unauthorizedFile) {
 		System.err.println(unauthorizedFile+" - " +"Unauthorized File, please change the file to authorized file (Authorize csv)!"); 

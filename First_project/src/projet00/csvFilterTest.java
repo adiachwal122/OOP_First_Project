@@ -7,8 +7,15 @@ import java.util.List;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class csvFilterTest.
+ */
 public class csvFilterTest {
 
+	/**
+	 * Test filter by MA cor SSID.
+	 */
 	@Test
 	public void testFilterByMACorSSID() {
 		csvFilter a = new csvFilter();
@@ -23,6 +30,9 @@ public class csvFilterTest {
 		}
 	}
 
+	/**
+	 * Test all.
+	 */
 	@Test
 	public void testAll() {
 		csvFilter a = new csvFilter();
@@ -39,6 +49,9 @@ public class csvFilterTest {
 
 	}
 
+	/**
+	 * Test filter by ID.
+	 */
 	@Test
 	public void testFilterByID() {
 		csvFilter a = new csvFilter();
@@ -53,6 +66,9 @@ public class csvFilterTest {
 		}
 	}
 	
+	/**
+	 * Test filter by time.
+	 */
 	@Test
 	public void testFilterByTime() {
 		csvFilter a = new csvFilter();

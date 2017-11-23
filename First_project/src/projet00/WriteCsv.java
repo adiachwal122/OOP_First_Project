@@ -5,10 +5,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WriteCsv.
+ */
 public class WriteCsv {
+	
+	/** The file table. */
 	private List<List<Network>> _fileTable;
 	
 	/**
+	 * Instantiates a new write csv.
+	 *
 	 * @author adiel ,adi and yuda
 	 */
 	public WriteCsv(){
@@ -17,9 +25,12 @@ public class WriteCsv {
 	}
 	
 	/**
+	 * Instantiates a new write csv.
+	 *
 	 * @author adiel ,adi and yuda
-	 * @param csvList
+	 * @param csvList the csv list
 	 * @return csv file
+	 * @throws IndexOutOfBoundsException the index out of bounds exception
 	 */
 	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException  {
 		try {

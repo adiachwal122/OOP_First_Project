@@ -11,8 +11,18 @@ import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Point;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Test.
+ */
 public class Test {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws IOException {
 		ReadCsv temp = new ReadCsv("Test\\WigleWifi_20171028203300.csv");
 		WriteCsv test = new WriteCsv(temp.get_fileTable());

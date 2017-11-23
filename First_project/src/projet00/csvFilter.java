@@ -1,4 +1,5 @@
 package projet00;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -59,8 +60,6 @@ public class csvFilter {
 									tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
 						}
 					}
-					line = fileOpen.readLine();
-
 				}else {
 					//Only one wifi spot
 					if(tempArr[keyIndex.get(MACorSSID.trim() + " " + 1)] != null 
@@ -70,9 +69,9 @@ public class csvFilter {
 								tempArr[keyIndex.get("SSID " + 1)], tempArr[keyIndex.get("MAC " + 1)], 
 								tempArr[keyIndex.get("Frequncy " + 1)], tempArr[keyIndex.get("Signal " + 1)]};
 					}
-					line = fileOpen.readLine();
 				}
-
+				line = fileOpen.readLine();
+				if (temp != null) this.file.add(temp);
 			}
 			fileOpen.close();
 		}catch (IOException e) {
@@ -106,7 +105,6 @@ public class csvFilter {
 
 			line = fileOpen.readLine();
 			while(line != null) {
-
 				tempArr = line.split(" , ");
 				if(Integer.parseInt( tempArr[keyIndex.get("WiFi networks")] ) > 1) {
 					//Print more then one wifi spot
@@ -115,10 +113,8 @@ public class csvFilter {
 								tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
 								tempArr[keyIndex.get("SSID " + i)], tempArr[keyIndex.get("MAC " + i)], 
 								tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
-
-						line = fileOpen.readLine();
+						if (temp != null) this.file.add(temp);
 					}
-
 				}else {
 					//Only One Spot
 					tempArr = line.split(" , ");
@@ -126,7 +122,7 @@ public class csvFilter {
 							tempArr[keyIndex.get("Lat")], tempArr[keyIndex.get("Lon")], tempArr[keyIndex.get("Alt")],
 							tempArr[keyIndex.get("SSID " + 1)], tempArr[keyIndex.get("MAC " + 1)], 
 							tempArr[keyIndex.get("Frequncy " + 1)], tempArr[keyIndex.get("Signal " + 1)]};
-
+					if (temp != null) this.file.add(temp);
 				}
 				line = fileOpen.readLine();
 			}
@@ -176,8 +172,6 @@ public class csvFilter {
 									tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
 						}
 					}
-					line = fileOpen.readLine();
-
 				}else {
 					//Only one wifi spot
 					if(tempArr[keyIndex.get(ID.trim())] != null 
@@ -187,9 +181,9 @@ public class csvFilter {
 								tempArr[keyIndex.get("SSID " + 1)], tempArr[keyIndex.get("MAC " + 1)], 
 								tempArr[keyIndex.get("Frequncy " + 1)], tempArr[keyIndex.get("Signal " + 1)]};
 					}
-					line = fileOpen.readLine();
 				}
-
+				line = fileOpen.readLine();
+				if (temp != null) this.file.add(temp);
 			}
 			fileOpen.close();
 		}catch (IOException e) {
@@ -240,8 +234,6 @@ public class csvFilter {
 										tempArr[keyIndex.get("Frequncy " + i)], tempArr[keyIndex.get("Signal " + i)]};
 							}
 						}
-						line = fileOpen.readLine();
-	
 					}else {
 						//Only one wifi spot
 						if(tempArr[keyIndex.get("Time")] != null ) {
@@ -253,9 +245,9 @@ public class csvFilter {
 										tempArr[keyIndex.get("SSID " + 1)], tempArr[keyIndex.get("MAC " + 1)], 
 										tempArr[keyIndex.get("Frequncy " + 1)], tempArr[keyIndex.get("Signal " + 1)]};
 						}
-						line = fileOpen.readLine();
 					}
-	
+				line = fileOpen.readLine();
+				if (temp != null) this.file.add(temp);
 				}
 			fileOpen.close();
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:kml xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:ns2="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
     <ns2:Document>
+        <ns2:TimeStamp>
+            <ns2:when>28/10/2017 20:17</ns2:when>
+        </ns2:TimeStamp>
         <ns2:Document>
             <ns2:name>Partner</ns2:name>
             <ns2:Placemark id="ONEPLUS A3003">
@@ -10,7 +13,7 @@
 Frequncy: 0
 Signal: -61</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -23,7 +26,7 @@ Signal: -61</ns2:description>
 Frequncy: 0
 Signal: -63</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -36,7 +39,7 @@ Signal: -63</ns2:description>
 Frequncy: 0
 Signal: -65</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -49,7 +52,7 @@ Signal: -65</ns2:description>
 Frequncy: 0
 Signal: -67</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -62,7 +65,7 @@ Signal: -67</ns2:description>
 Frequncy: 0
 Signal: -75</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -75,7 +78,7 @@ Signal: -75</ns2:description>
 Frequncy: 3
 Signal: -78</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -88,7 +91,7 @@ Signal: -78</ns2:description>
 Frequncy: 3
 Signal: -78</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -101,7 +104,7 @@ Signal: -78</ns2:description>
 Frequncy: 4
 Signal: -82</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -114,7 +117,7 @@ Signal: -82</ns2:description>
 Frequncy: 4
 Signal: -82</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -127,7 +130,7 @@ Signal: -82</ns2:description>
 Frequncy: 1
 Signal: -85</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09218707,34.8600917,51.0</ns2:coordinates>
+                    <ns2:coordinates>34.8600917,32.09218707,51.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -140,7 +143,7 @@ Signal: -85</ns2:description>
 Frequncy: 0
 Signal: -63</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -153,7 +156,7 @@ Signal: -63</ns2:description>
 Frequncy: 0
 Signal: -69</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -166,7 +169,7 @@ Signal: -69</ns2:description>
 Frequncy: 0
 Signal: -69</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -179,7 +182,7 @@ Signal: -69</ns2:description>
 Frequncy: 0
 Signal: -73</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -192,7 +195,7 @@ Signal: -73</ns2:description>
 Frequncy: 5
 Signal: -76</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -205,7 +208,7 @@ Signal: -76</ns2:description>
 Frequncy: 5
 Signal: -76</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -218,7 +221,7 @@ Signal: -76</ns2:description>
 Frequncy: 5
 Signal: -76</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -231,7 +234,7 @@ Signal: -76</ns2:description>
 Frequncy: 1
 Signal: -77</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -244,7 +247,7 @@ Signal: -77</ns2:description>
 Frequncy: 1
 Signal: -77</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -257,7 +260,7 @@ Signal: -77</ns2:description>
 Frequncy: 0
 Signal: -77</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09265869,34.85001719,40.0</ns2:coordinates>
+                    <ns2:coordinates>34.85001719,32.09265869,40.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -270,7 +273,7 @@ Signal: -77</ns2:description>
 Frequncy: 0
 Signal: -63</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -283,7 +286,7 @@ Signal: -63</ns2:description>
 Frequncy: 0
 Signal: -65</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -296,7 +299,7 @@ Signal: -65</ns2:description>
 Frequncy: 1
 Signal: -79</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -309,7 +312,7 @@ Signal: -79</ns2:description>
 Frequncy: 1
 Signal: -79</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -322,7 +325,7 @@ Signal: -79</ns2:description>
 Frequncy: 1
 Signal: -80</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -335,7 +338,7 @@ Signal: -80</ns2:description>
 Frequncy: 1
 Signal: -80</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -348,7 +351,7 @@ Signal: -80</ns2:description>
 Frequncy: 1
 Signal: -82</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -361,7 +364,7 @@ Signal: -82</ns2:description>
 Frequncy: 1
 Signal: -82</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -374,7 +377,7 @@ Signal: -82</ns2:description>
 Frequncy: 36
 Signal: -85</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>
@@ -387,7 +390,7 @@ Signal: -85</ns2:description>
 Frequncy: 1
 Signal: -85</ns2:description>
                 <ns2:Point>
-                    <ns2:coordinates>32.09273005,34.84871887,39.0</ns2:coordinates>
+                    <ns2:coordinates>34.84871887,32.09273005,39.0</ns2:coordinates>
                 </ns2:Point>
             </ns2:Placemark>
         </ns2:Document>

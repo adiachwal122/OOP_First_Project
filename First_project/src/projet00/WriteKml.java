@@ -89,9 +89,10 @@ public class WriteKml {
 							"\nFrequncy: " + list[keyIndex.get("Frequncy")] + 
 							"\nSignal: " + list[keyIndex.get("Signal")])
 					.withOpen(Boolean.TRUE).createAndSetPoint()
-					.addToCoordinates(Double.parseDouble(list[keyIndex.get("Lat")])
-							, Double.parseDouble(list[keyIndex.get("Lon")]) 
+					.addToCoordinates(Double.parseDouble(list[keyIndex.get("Lon")])
+							, Double.parseDouble(list[keyIndex.get("Lat")]) 
 							, Double.parseDouble(list[keyIndex.get("Alt")]));
+				document.createAndSetTimeStamp().withWhen(list[keyIndex.get("Time")]);
 			}
 			
 			writekml.marshal(new File("KmlFile.kml"));

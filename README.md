@@ -13,13 +13,12 @@ Our project is devided to different class and each class has JunitTest class whi
    * **WriteCsv** - the WriteCsv class uses the List of List of Network as in ReadCsv and BufferedWriter to create a CSV file/
 
    * **csvFilter** - the csvFilter is divided to types of filters for each parameter:
-'''
+   ```
 1. filter By MAC or SSID - the fenction gets String MAC or SSID ans String parameter and filter the file, the functuon returns csv file after the filter.
 2.filter By ID - the fenction gets String ID ans String parameter and filter the file, the functuon returns csv file after the filter.
 3. filter By Time - the fenction gets String start and String end and filter the file from the time start to the time end,the functuon returns csv file after the filter.            
 4.The function "All" - the fenction uses FileReader BufferedReader to create the file completley.
-'''
-
+```
    * **WriteKml** - the WriteKml class gets csv file after filter and uses "JAK" libraries in order to create KML file with time stamp. 
 
 

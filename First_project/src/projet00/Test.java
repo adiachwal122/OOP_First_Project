@@ -1,14 +1,6 @@
 package projet00;
 
-//import java.io.File;
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
-
-import de.micromata.opengis.kml.v_2_2_0.Coordinate;
-import de.micromata.opengis.kml.v_2_2_0.Kml;
-import de.micromata.opengis.kml.v_2_2_0.Placemark;
-import de.micromata.opengis.kml.v_2_2_0.Point;
 
 
 // TODO: Auto-generated Javadoc

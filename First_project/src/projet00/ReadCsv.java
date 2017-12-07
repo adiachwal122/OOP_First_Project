@@ -16,29 +16,41 @@ import java.util.stream.Collectors;
 
 import static java.nio.file.StandardCopyOption.*;
 
-/**
- * 
- * @author Adiel
- * @since 29/10/2017 
- * @see:
- *      *https://www.tutorialspoint.com/java/io/file_listfiles.htm
- *      *http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
- *      *https://labs.micromata.de/projects/jak/implementing.html
- * 
- */
 
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReadCsv.
+ */
 public class ReadCsv {
 
+
 	private List<List<Network>> _fileTable = new ArrayList<List<Network>>();;
+	
+
 	private Network wifiObj;
 
-	//@Constractors
-	//No path
+
+	/**
+	 * Instantiates a new read csv.
+	 * No path
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	
 	public ReadCsv() throws IOException {
 		System.err.println("No path selected!");
 	}
 
-	//Selecting treatment type
+	/**
+	 * Instantiates a new read csv.
+	 *
+	 * @author adiel, adi and yuda
+	 * @param String path
+	 * @return list of csv file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @see https://www.tutorialspoint.com/java/io/file_listfiles.htm
+	 * @see http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
+	 */
 	public ReadCsv(String path) throws IOException {
 		try {
 			/**
@@ -89,7 +101,13 @@ public class ReadCsv {
 		}
 	}
 
-	//Csv input
+	/**
+	 * Csv input.
+	 *
+	 * @param String csvPath
+	 * @return copy csv file to workspace
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void csvInput(String csvPath) throws IOException {
 		try {
 			File input_csv = new File (csvPath);
@@ -104,10 +122,13 @@ public class ReadCsv {
 			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
 	}
-
+	
 	/**
-	 * Order the csv  
-	 * @throws IOException 
+	 * Order the csv.
+	 *
+	 * @param String path
+	 * @return list of csv file
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void getOrder(String path) throws IOException{
 		try {
@@ -209,12 +230,22 @@ public class ReadCsv {
 			System.err.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
 	}
-
+	
+	/**
+	 * Gets the file table.
+	 *
+	 * @return List<List<Network>>
+	 */
 	public List<List<Network>> get_fileTable() {
 		return _fileTable;
 	}
 
-	//Check of file type 
+	/**
+	 * File type.
+	 *
+	 * @param filePath the file path
+	 * @return type of file
+	 */
 	public String fileType (String filePath) {
 		//Cut the type from file (exemple: txt)
 		int length = filePath.length()-3;
@@ -222,6 +253,9 @@ public class ReadCsv {
 		return type.toUpperCase();
 	}
 
+	/**
+	 * Unauthorized file.
+	 */
 	//Check if file type is unauthorized 
 	public void unauthorizedFile(String unauthorizedFile) {
 		System.err.println(unauthorizedFile+" - " +"Unauthorized File, please change the file to authorized file (csv,txt or kml)!"); 

@@ -2,13 +2,19 @@ package projet00;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReadCsvTest.
+ */
 public class ReadCsvTest {
 
+	/**
+	 * Test read csv string.
+	 */
 	@Test
 	public void testReadCsvString() {
 		String file = "28.10" ;
@@ -23,6 +29,9 @@ public class ReadCsvTest {
 	
 		}
 
+	/**
+	 * Test file type.
+	 */
 	@Test
 	public void testFileType() {
 		

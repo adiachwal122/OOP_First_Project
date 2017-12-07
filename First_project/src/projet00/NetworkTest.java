@@ -4,7 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NetworkTest.
+ */
 public class NetworkTest {
+	
+	/**
+	 * Test network string string int int string string string string string.
+	 */
 	@Test
 	public void testNetworkStringStringIntIntStringStringStringStringString() {
 		Network a = new Network("Bezeq-NGN_E9CBFB", "cc:b2:55:e9:cb:fc", 6, -68, 

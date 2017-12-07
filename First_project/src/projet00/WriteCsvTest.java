@@ -9,9 +9,18 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WriteCsvTest.
+ */
 public class WriteCsvTest {
 
 	
+	/**
+	 * Test write csv list of list of network.
+	 *
+	 * @throws FileNotFoundException the file not found exception
+	 */
 	@Test
 	public void testWriteCsvListOfListOfNetwork() throws FileNotFoundException {
 		String [] firstHeader = {"Time", "ID", "Lat", "Lon", "Alt", "WiFi networks","SSID" ,"MAC"  ,"Frequncy"  ,"Signal"};

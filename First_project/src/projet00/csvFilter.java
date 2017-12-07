@@ -10,18 +10,38 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.xml.transform.Templates;
-
+// TODO: Auto-generated Javadoc
+/**
+ * The Class csvFilter.
+ */
 public class csvFilter {
+	
+	/** The key index. */
 	private HashMap<String, Integer> keyIndex;
+	
+	/** The file. */
 	private List<String []> file;
 
+	/**
+	 * Instantiates a new csv filter.
+	 */
 	public csvFilter() {
 		this.keyIndex = null;
 		this.file = null;
 	}
 
-	//Filter by MAC and SSID
+	/**
+	 * Filter by MAC or SSID.
+	 *
+	 * @author adiel ,adi and yuda
+	 * @param String file
+	 * @param String MACorSSID
+	 * @param String parameter
+	 * @return Void (make list)
+	 * @throws NumberFormatException the number format exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @category Filter by MAC and SSID
+	 */
 	public void filterByMACorSSID(String file, String MACorSSID, String parameter) throws NumberFormatException, IOException {
 
 		try {
@@ -81,7 +101,15 @@ public class csvFilter {
 		}
 	}
 
-	//Print all file
+	/**
+	 * Print All.
+	 *
+	 * @author adiel ,adi and yuda
+	 * @param String file
+	 * @return Void(make list)
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @category Print all file
+	 */
 	public void All(String file) throws IOException {
 		try {
 			//Read file
@@ -124,7 +152,18 @@ public class csvFilter {
 		}
 	}
 
-	//Filter by ID 
+	/**
+	 * Filter by ID.
+	 *
+	 * @author adiel ,adi and yuda
+	 * @param String file
+	 * @param String ID
+	 * @param String parameter
+	 * @return Void(make list)
+	 * @throws NumberFormatException the number format exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @category Filter by ID
+	 */
 	public void filterByID(String file, String ID, String parameter) throws NumberFormatException, IOException {
 		try {
 			//Read file
@@ -169,7 +208,18 @@ public class csvFilter {
 
 		}
 	}
-	//Filter by Time
+	
+	/**
+	 * Filter by time.
+	 *
+	 * @author adiel ,adi and yuda
+	 * @param String file
+	 * @param String start
+	 * @param String end
+	 * @return Void(make list)
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @category Filter by Time
+	 */
 	public void filterByTime(String file, String start, String end)throws IOException{
 		try {
 			DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -219,12 +269,18 @@ public class csvFilter {
 
 		} catch (ParseException e) {
 			System.err.println(e.getMessage());
-		}catch (IOException e) {
+		}catch (IOException | NullPointerException e) {
 			System.err.println(e.getMessage());
 		}
 
 	}
 
+	/**
+	 * Gets the key index.
+	 *
+	 * @author adiel ,adi and yuda
+	 * @return HashMap<String, Integer> keyIndex
+	 */
 	public HashMap<String, Integer> getKeyIndex() {
 		HashMap<String, Integer> newKeys= new HashMap<>();
 		newKeys.put("Time",0);
@@ -239,6 +295,13 @@ public class csvFilter {
 		return newKeys;
 	}
 
+
+	/**
+	 * Gets the file.
+	 *
+	 * @author adiel ,adi and yuda
+	 * @return List<String[]> file
+	 */
 	public List<String[]> getFile() {
 		return file;
 	}

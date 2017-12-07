@@ -20,7 +20,6 @@ public class WriteCsv {
 	 * @author adiel ,adi and yuda
 	 */
 	public WriteCsv(){
-		
 		this._fileTable = null;
 	}
 	

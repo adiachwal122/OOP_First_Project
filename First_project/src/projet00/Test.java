@@ -3,6 +3,7 @@ package projet00;
 //import java.io.File;
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 
 import de.micromata.opengis.kml.v_2_2_0.Coordinate;
@@ -24,7 +25,7 @@ public class Test {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		ReadCsv temp = new ReadCsv("Test\\WigleWifi_20171028203300.csv");
+		ReadCsv temp = new ReadCsv("Test");
 		WriteCsv test = new WriteCsv(temp.get_fileTable());
 		csvFilter adi = new csvFilter();
 		adi.All("final_csv.csv");

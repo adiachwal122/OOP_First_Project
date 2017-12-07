@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +28,8 @@ import static java.nio.file.StandardCopyOption.*;
  */
 public class ReadCsv {
 
-	private List<List<Network>> _fileTable;
+	private List<List<Network>> _fileTable = new ArrayList<List<Network>>();
+;
 	
 	private Network wifiObj;
 
@@ -63,21 +68,8 @@ public class ReadCsv {
 			//Folder is empty
 			if(filesInFolder.isEmpty()) System.err.println("Folder is empty!");
 
-			//Only one file in folder
-			if(filesInFolder.size()== 1) {	
-				String typeOfFile = fileType(path);
-				if (typeOfFile.equals("CSV"))
-					csvInput(path);
-				/*In develop
-				 * else if (typeOfFile.equals("KML")) 
-					kmlToCsv(path);*/
-				else unauthorizedFile(filesInFolder.get(0).getName());
-
-			}
-
-			//More then one file in folder
-			else if (filesInFolder.size()> 1) {
-				while(!filesInFolder.isEmpty()) {
+			//read all file in folder
+			else while(!filesInFolder.isEmpty()) {
 					System.out.println(filesInFolder.get(0).getName());
 
 					String typeOfFile = fileType(filesInFolder.get(0).getName());
@@ -85,14 +77,11 @@ public class ReadCsv {
 
 					if (typeOfFile.equals("CSV"))
 						csvInput(pathOfEachFile);
-					/*In develop
-					 * else if (typeOfFile.equals("KML")) 
-						kmlToCsv(path);*/
 					else unauthorizedFile(filesInFolder.get(0).getName());
 
 					filesInFolder.remove(0);
 				}
-			}
+			
 		}
 		catch(IOException e){
 			System.out.println(e.getMessage());
@@ -135,9 +124,6 @@ public class ReadCsv {
 			BufferedReader fileOpen = new BufferedReader(readFile);
 			String model = null , stop = null;
 
-			//Main list
-			this._fileTable = new ArrayList<List<Network>>();
-
 			//Temp list
 			List<Network> line_of_table = new ArrayList<Network>();
 
@@ -166,8 +152,7 @@ public class ReadCsv {
 			}
 
 			stop = fileOpen.readLine();
-			if(stop != null)
-				orFile = stop.split(",");			
+			if(stop != null) orFile = stop.split(",");			
 			//Create table
 			while(stop != null) {
 				//Add to line of list
@@ -208,6 +193,26 @@ public class ReadCsv {
 						if(Math.abs(wifi1.getSignal()) == Math.abs(wifi2.getSignal()))
 							return 0;
 						return 1;
+					}
+				});
+			}
+			//Sort by signal
+			for (List<Network> obj : this._fileTable) {
+				Collections.sort(obj,new Comparator<Network>() {
+					public int compare(Network wifi1, Network wifi2) {
+						try {
+							DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+							Date wifi1Time =  df1.parse(wifi1.getTime().trim());
+							Date wifi2Time =  df1.parse(wifi2.getTime().trim());
+							if(wifi2Time.before(wifi1Time))
+								return -1;
+							if(wifi1Time.equals(wifi2Time))
+								return 0;
+							return 1;
+						}catch (ParseException e) {
+							e.getCause();
+							return 0;
+						}
 					}
 				});
 			}

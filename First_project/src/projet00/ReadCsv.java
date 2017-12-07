@@ -24,8 +24,10 @@ import static java.nio.file.StandardCopyOption.*;
  */
 public class ReadCsv {
 
-	private List<List<Network>> _fileTable;
+
+	private List<List<Network>> _fileTable = new ArrayList<List<Network>>();;
 	
+
 	private Network wifiObj;
 
 
@@ -134,9 +136,6 @@ public class ReadCsv {
 			FileReader readFile = new FileReader(path);
 			BufferedReader fileOpen = new BufferedReader(readFile);
 			String model = null , stop = null;
-
-			//Main list
-			this._fileTable = new ArrayList<List<Network>>();
 
 			//Temp list
 			List<Network> line_of_table = new ArrayList<Network>();

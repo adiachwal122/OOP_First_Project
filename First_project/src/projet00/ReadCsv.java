@@ -16,18 +16,12 @@ import java.util.stream.Collectors;
 
 import static java.nio.file.StandardCopyOption.*;
 
-
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class ReadCsv.
  */
 public class ReadCsv {
-
-
 	private List<List<Network>> _fileTable = new ArrayList<List<Network>>();;
-	
-
 	private Network wifiObj;
 
 
@@ -65,31 +59,15 @@ public class ReadCsv {
 			//Folder is empty
 			if(filesInFolder.isEmpty()) System.err.println("Folder is empty!");
 
-			//Only one file in folder
-			if(filesInFolder.size()== 1) {	
-				String typeOfFile = fileType(path);
-				if (typeOfFile.equals("CSV"))
-					csvInput(path);
-				/*In develop
-				 * else if (typeOfFile.equals("KML")) 
-					kmlToCsv(path);*/
-				else unauthorizedFile(filesInFolder.get(0).getName());
-
-			}
-
-			//More then one file in folder
+			//show all file in folder or read file
 			else if (filesInFolder.size()> 1) {
 				while(!filesInFolder.isEmpty()) {
 					System.out.println(filesInFolder.get(0).getName());
-
 					String typeOfFile = fileType(filesInFolder.get(0).getName());
 					String pathOfEachFile = filesInFolder.get(0).getPath();
 
 					if (typeOfFile.equals("CSV"))
 						csvInput(pathOfEachFile);
-					/*In develop
-					 * else if (typeOfFile.equals("KML")) 
-						kmlToCsv(path);*/
 					else unauthorizedFile(filesInFolder.get(0).getName());
 
 					filesInFolder.remove(0);
@@ -135,7 +113,7 @@ public class ReadCsv {
 			//Read file
 			FileReader readFile = new FileReader(path);
 			BufferedReader fileOpen = new BufferedReader(readFile);
-			String model = null , stop = null;
+			String model = "NaN" , stop = null;
 
 			//Temp list
 			List<Network> line_of_table = new ArrayList<Network>();
@@ -165,8 +143,8 @@ public class ReadCsv {
 			}
 
 			stop = fileOpen.readLine();
-			if(stop != null)
-				orFile = stop.split(",");			
+			if(stop != null) orFile = stop.split(",");	
+			
 			//Create table
 			while(stop != null) {
 				//Add to line of list
@@ -180,8 +158,7 @@ public class ReadCsv {
 
 				line_of_table.add(wifiObj);
 				stop = fileOpen.readLine();
-				if(stop != null)
-					orFile = stop.split(",");
+				if(stop != null) orFile = stop.split(",");
 			}
 
 			//Move to main table, _fileTable, by date

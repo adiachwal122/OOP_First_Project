@@ -53,7 +53,7 @@ public class WriteCsv {
 			if(this._fileTable.size() != 0) {
 				for (List<Network> runList: this._fileTable) {
 					int count = 0;
-					if(runList != null) {
+					if(!runList.isEmpty()) {
 						if(runList.size() > 10) {
 							makeFile.write(runList.get(0).getTime() + " , " + runList.get(0).getId() + " , "
 									+runList.get(0).getLat() + " , " + runList.get(0).getLon() + " , "
@@ -81,7 +81,7 @@ public class WriteCsv {
 			//close session
 			makeFile.close();
 		}catch(IndexOutOfBoundsException | IOException | NullPointerException e) {
-			System.err.println(e.getMessage());
+			e.printStackTrace();
 			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
 	}

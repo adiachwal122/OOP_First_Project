@@ -35,15 +35,15 @@ public class Network {
 	 */
 	public Network(String nSsid, String nMac, int nFrequncy, int nSignal, 
 			String nTime,String nId, String nLat, String nLon, String nAlt) {
-		this.mac = nMac;
-		this.ssid = nSsid;
-		this.frequncy = nFrequncy;
-		this.signal = nSignal;
-		this.time = nTime ;
-		this.id = nId;
-		this.lat = nLat;
-		this.lon = nLon;
-		this.alt = nAlt;
+		this.mac = (!nMac.equals(null)) ? nMac: "NaN";
+		this.ssid = (!nSsid.equals(null)) ? nSsid:"NaN";
+		this.frequncy = (nFrequncy != 0) ? nFrequncy:0;
+		this.signal = (nSignal != 0) ? nSignal:0;
+		this.time = nTime;
+		this.id = (!nId.equals(null)) ? nId:"NaN";
+		this.lat = (!nLat.equals(null)) ? nLat:"NaN";
+		this.lon = (!nLon.equals(null)) ? nLon:"NaN";
+		this.alt = (!nAlt.equals(null)) ? nAlt:"NaN";
 	}
 
 	/**

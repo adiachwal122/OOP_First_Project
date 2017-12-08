@@ -16,10 +16,10 @@ public class Test {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		ReadCsv temp = new ReadCsv("Test\\WigleWifi_20171028203300.csv");
+		ReadCsv temp = new ReadCsv("Test");
 		WriteCsv test = new WriteCsv(temp.get_fileTable());
 		csvFilter adi = new csvFilter();
-		adi.filterByTime("final_csv.csv", "28/10/2017 20:15", "28/10/2017 20:17");
+		adi.All("final_csv.csv");
  		WriteKml kml = new WriteKml(adi.getFile(),adi.getKeyIndex());
 
 

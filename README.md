@@ -24,7 +24,7 @@ to the time end, the functuon returns csv file after the filter.
 ```
    * **WriteKml** - the WriteKml class gets csv file after filter and uses "JAK" libraries in order to create KML file with time stamp. 
 
-##How to use it - Example
+## How to use it - Example
 ```
 public static void main(String[] args) throws IOException {
 		/*ReadCsv gets csv file from WiggleWif only (path to file or folder)*/

@@ -1,15 +1,6 @@
 package projet00;
 
-//import java.io.File;
-import java.io.File;
 import java.io.IOException;
-import java.time.Instant;
-import java.util.List;
-
-import de.micromata.opengis.kml.v_2_2_0.Coordinate;
-import de.micromata.opengis.kml.v_2_2_0.Kml;
-import de.micromata.opengis.kml.v_2_2_0.Placemark;
-import de.micromata.opengis.kml.v_2_2_0.Point;
 
 
 // TODO: Auto-generated Javadoc
@@ -25,12 +16,16 @@ public class Test {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		ReadCsv temp = new ReadCsv("Test");
-		WriteCsv test = new WriteCsv(temp.get_fileTable());
-		csvFilter adi = new csvFilter();
-		adi.All("final_csv.csv");
- 		WriteKml kml = new WriteKml(adi.getFile(),adi.getKeyIndex());
-
+		/*ReadCsv gets csv file from WiggleWif only (path to file or folder)*/
+		ReadCsv file = new ReadCsv("Test");
+		/*WriteCsv gets List<List<Network>> ,which provided by ReadCsv file.*/
+		WriteCsv write = new WriteCsv(file.get_fileTable());
+		/*Build csvFilter and then use one of the filters, but it's possible to use it directly*/
+		FilterByDate all= new FilterByDate(write.get_fileTable(),"27/10/2017  16:18:59" ,"27/10/2017  16:19:04");
+		/*The class gets List<String []> ,HashMap<String, Integer> which provided by Filter*/
+		WriteKml kml = new WriteKml(all.getFilteredFile());
+		kml.write();
+		/*Kml crated (with time stamp)*/
 
 	}
 

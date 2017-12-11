@@ -25,14 +25,13 @@ import static java.nio.file.StandardCopyOption.*;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ReadCsv.
+ * This class gets csv file from WiggleWif only (path to file or folder)
  */
 public class ReadCsv {
-
-	private List<List<Network>> _fileTable = new ArrayList<List<Network>>();
-;
-	
+	/*Csv database*/
+	private List<List<Network>> database = new ArrayList<List<Network>>();
+	/*Object of type Network*/
 	private Network wifiObj;
-
 
 	/**
 	 * Instantiates a new read csv.
@@ -105,11 +104,10 @@ public class ReadCsv {
 			getOrder("temp_csv.csv");
 		}
 		catch(IOException e) {
-			System.out.println(e.getMessage());
-			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
+			e.printStackTrace();
+			System.out.println("\nSorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
 	}
-	
 	/**
 	 * Order the csv.
 	 *
@@ -122,10 +120,12 @@ public class ReadCsv {
 			//Read file
 			FileReader readFile = new FileReader(path);
 			BufferedReader fileOpen = new BufferedReader(readFile);
-			String model = null , stop = null;
-
+			String model = "NaN" , stop = null;
 			//Temp list
 			List<Network> line_of_table = new ArrayList<Network>();
+			//Unsorted list
+			List<List<Network>> fileTable = new ArrayList<List<Network>>();
+
 
 			//Title index
 			HashMap<String, Integer>keyIndex = new HashMap<String,Integer>();
@@ -152,7 +152,8 @@ public class ReadCsv {
 			}
 
 			stop = fileOpen.readLine();
-			if(stop != null) orFile = stop.split(",");			
+			if(stop != null) orFile = stop.split(",");
+			
 			//Create table
 			while(stop != null) {
 				//Add to line of list
@@ -163,29 +164,25 @@ public class ReadCsv {
 						orFile[keyIndex.get("CurrentLatitude")] ,
 						orFile[keyIndex.get("CurrentLongitude")] ,
 						orFile[keyIndex.get("AltitudeMeters")]);
-
+				
 				line_of_table.add(wifiObj);
 				stop = fileOpen.readLine();
-				if(stop != null)
-					orFile = stop.split(",");
+				if(stop != null) orFile = stop.split(",");
 			}
 
 			//Move to main table, _fileTable, by date
 			int fromIndex = 0;
 			for (int i = 0 ; i < line_of_table.size()-1 ; i++) {
 				if(!line_of_table.get(i).getTime().trim().equals(line_of_table.get(i+1).getTime().trim())) {
-					this._fileTable.add(line_of_table.subList(fromIndex, i));
+					fileTable.add(line_of_table.subList(fromIndex, i));
 					fromIndex = i+1;
 				}
 			}
 
 			if(fromIndex == 0 || fromIndex < line_of_table.size())
-				this._fileTable.add(line_of_table.subList(fromIndex, line_of_table.size()));
-
-			//			System.out.println(this._fileTable.toString());
-
+				fileTable.add(line_of_table.subList(fromIndex, line_of_table.size()));
 			//Sort by signal
-			for (List<Network> obj : this._fileTable) {
+			for (List<Network> obj : fileTable) {
 				Collections.sort(obj,new Comparator<Network>() {
 					public int compare(Network wifi1, Network wifi2) {
 						if(Math.abs(wifi1.getSignal()) < Math.abs(wifi2.getSignal()))
@@ -196,14 +193,15 @@ public class ReadCsv {
 					}
 				});
 			}
-			//Sort by signal
-			for (List<Network> obj : this._fileTable) {
+			
+			//Sort by Date
+			for (List<Network> obj : fileTable) {
 				Collections.sort(obj,new Comparator<Network>() {
-					public int compare(Network wifi1, Network wifi2) {
+					public int compare(Network wifiLine1, Network wifiLine2) {
 						try {
 							DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-							Date wifi1Time =  df1.parse(wifi1.getTime().trim());
-							Date wifi2Time =  df1.parse(wifi2.getTime().trim());
+							Date wifi1Time =  df1.parse(wifiLine1.getTime().trim());
+							Date wifi2Time =  df1.parse(wifiLine2.getTime().trim());
 							if(wifi2Time.before(wifi1Time))
 								return -1;
 							if(wifi1Time.equals(wifi2Time))
@@ -215,12 +213,17 @@ public class ReadCsv {
 						}
 					}
 				});
-			}
+				}
 			//			System.out.println(this._fileTable.toString());
 
-			for (List<Network> net : this._fileTable) {
+			//Max of 10 element in each sublist
+			for (List<Network> net : fileTable) {
 				if(net.size() > 10) {
-					net = net.subList(0, 9);
+					this.database.add(net.stream()
+							.limit(10)
+							.collect(Collectors.toList()));
+				}else {
+					this.database.add(net);
 				}
 			}
 
@@ -243,7 +246,7 @@ public class ReadCsv {
 	 * @return List<List<Network>>
 	 */
 	public List<List<Network>> get_fileTable() {
-		return _fileTable;
+		return database;
 	}
 
 	/**

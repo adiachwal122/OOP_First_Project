@@ -59,9 +59,9 @@ public class WriteKml implements Write{
 				placemark.withId(wifiSpot.getId()).withDescription("MAC: " + wifiSpot.getMac() +
 							"\nFrequncy: " + wifiSpot.getFrequncy() + 
 							"\nSignal: " + wifiSpot.getSignal())
-				.createAndSetPoint().addToCoordinates(Double.parseDouble(wifiSpot.getLon())
-													, Double.parseDouble(wifiSpot.getLat()) 
-													, Double.parseDouble(wifiSpot.getAlt()));
+				.createAndSetPoint().addToCoordinates(wifiSpot.getLon()
+													, wifiSpot.getLat() 
+													,wifiSpot.getAlt());
 				placemark.createAndSetTimeStamp().withWhen(timeStampFormate(wifiSpot.getTime()));			
 			}
 			writekml.marshal(new File("KmlFile - " + timeDate.getTime() + ".kml"));

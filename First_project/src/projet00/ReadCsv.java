@@ -161,9 +161,9 @@ public class ReadCsv {
 						Integer.parseInt(orFile[keyIndex.get("Channel")]) , 
 						Integer.parseInt(orFile[keyIndex.get("RSSI")]), 
 						orFile[keyIndex.get("FirstSeen")], model, 
-						orFile[keyIndex.get("CurrentLatitude")] ,
-						orFile[keyIndex.get("CurrentLongitude")] ,
-						orFile[keyIndex.get("AltitudeMeters")]);
+						Double.parseDouble(orFile[keyIndex.get("CurrentLatitude")]) ,
+						Double.parseDouble(orFile[keyIndex.get("CurrentLongitude")]) ,
+						Double.parseDouble(orFile[keyIndex.get("AltitudeMeters")]));
 				
 				line_of_table.add(wifiObj);
 				stop = fileOpen.readLine();

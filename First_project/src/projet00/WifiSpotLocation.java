@@ -9,10 +9,10 @@ public class WifiSpotLocation {
 
 	public WifiSpotLocation(List<Network> macFiltered) {
 		this.database = macFiltered;
-		
+		average(macFiltered);
 	}
 		/**
-		 * Returns the k rows with the highest y values.
+		 * Returns the k rows with the highest signal values.
 		 * Implemented using Streams.
 		 * https://github.com/erelsgl/ariel-oop-course/blob/master/YomHamishi/src/lesson7/WifiDatabase.java
 		 */
@@ -24,5 +24,22 @@ public class WifiSpotLocation {
 				.limit(k)
 				.collect(Collectors.toList());
 	}
-		
+	/*Get average Network*/
+	public Network average(List<Network> listMAC) {
+		/*List of 3 sorted database by signal*/
+		List<Network> data = strongestSignal(3);
+		double avgAlt = 0, avgLon = 0, avgLat = 0;
+		/*Sum the Alt, Lon and Lat from the list*/
+		for (Network net : data) {
+			avgAlt += net.getAlt();
+			avgLon += net.getLon();
+			avgLat += net.getLat();
+		}
+		/*Get the average*/
+		avgAlt /= data.size();
+		avgLon /= data.size();
+		avgLat /= data.size();
+		/*Get Network element*/
+		return new Network(listMAC.get(0).getMac(), avgLat, avgLon, avgAlt);	
+		}
 }

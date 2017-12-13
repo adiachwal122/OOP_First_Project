@@ -46,8 +46,8 @@ public class FilteredByLocation extends Filter{
 	double CoordDistance(double latitude, double longitude, Network point)
 	{
 	    return 6371 * Math.acos(
-	        Math.sin(latitude) * Math.sin(Double.parseDouble(point.getLat()))
-	        + Math.cos(latitude) * Math.cos(Double.parseDouble(point.getLat())) * Math.cos(Double.parseDouble(point.getLon()) - longitude));
+	        Math.sin(latitude) * Math.sin(point.getLat())
+	        + Math.cos(latitude) * Math.cos(point.getLat()) * Math.cos(point.getLon() - longitude));
 	}
 	@Override
 	public List<Network> getFilteredFile() {

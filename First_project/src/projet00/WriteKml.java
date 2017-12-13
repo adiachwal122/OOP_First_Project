@@ -2,7 +2,11 @@ package projet00;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Date;
 import java.util.List;
+
+import javax.print.attribute.standard.DateTimeAtCreation;
+
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
@@ -32,7 +36,7 @@ public class WriteKml implements Write{
 
 	public WriteKml(List<Network> kmlList){
 		this.listOfNet = kmlList;
-		write();
+		System.out.println(write());
 	}
 	
 	public String timeStampFormate(String time) {
@@ -46,6 +50,7 @@ public class WriteKml implements Write{
 	@Override
 	public String write() {
 		try {
+			Date timeDate = new Date();
 			final Kml writekml = new Kml();
 			Document document = writekml.createAndSetDocument();
 			for (Network wifiSpot : listOfNet) {
@@ -59,7 +64,7 @@ public class WriteKml implements Write{
 													, Double.parseDouble(wifiSpot.getAlt()));
 				placemark.createAndSetTimeStamp().withWhen(timeStampFormate(wifiSpot.getTime()));			
 			}
-			writekml.marshal(new File("KmlFile.kml"));
+			writekml.marshal(new File("KmlFile - " + timeDate.getTime() + ".kml"));
 			return "Kml created!!";
 		} catch (FileNotFoundException | NullPointerException e) {
 			// TODO Auto-generated catch block

@@ -19,12 +19,11 @@ public class Test {
 		/*ReadCsv gets csv file from WiggleWif only (path to file or folder)*/
 		ReadCsv file = new ReadCsv("Test");
 		/*WriteCsv gets List<List<Network>> ,which provided by ReadCsv file.*/
-		WriteCsv write = new WriteCsv(file.get_fileTable());
+		WriteCsv write = new WriteCsv(file.getDatabase());
 		/*Build csvFilter and then use one of the filters, but it's possible to use it directly*/
-		FilterByDate all= new FilterByDate(write.get_fileTable(),"27/10/2017  16:18:59" ,"27/10/2017  16:19:04");
+		FilterByMAC all = new FilterByMAC(write.getFileTable(),"6a:12:f5:f9:5e:71");
 		/*The class gets List<String []> ,HashMap<String, Integer> which provided by Filter*/
 		WriteKml kml = new WriteKml(all.getFilteredFile());
-		kml.write();
 		/*Kml crated (with time stamp)*/
 
 	}

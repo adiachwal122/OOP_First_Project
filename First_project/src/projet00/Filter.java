@@ -7,47 +7,30 @@ import java.util.List;
  * The Class Filtered.
  */
 public abstract class Filter {
-	/** The file. */
+	/** The file. *//*
 	protected List<List<Network>> file;
-	/*The final database*/
+	The final database
 	protected List<Network> filteredFile;
-	
-	protected Network wifiSpot;
+	*/
 /**
  * Instantiates a new filtered.
  */
-public Filter() {
+/*public Filter() {
 		this.file = null;
 		this.filteredFile = null;
-	}
+	}*/
 /**
  * Instantiates a new filtered.
  */
-public Filter(List<List<Network>> csvList) {
+/*public Filter(List<List<Network>> csvList) {
 	this.file = csvList;
 	this.filteredFile = null;
-	filter();
-}
+	System.out.println(filter());
+}*/
 /*
  * Filter function
  * */
-public String filter() {
-	if(!this.file.isEmpty()) {
-		for (List<Network> runList: this.file) {
-			if(runList.size() >= 1) {
-				for (Network network : runList) {
-					wifiSpot = network;
-					if(comperable()) {
-						this.filteredFile.add(network);
-					}
-				}
-			}	
-		}
-		return "Filtered Succeed!";
-	}else {
-		return "Database is empty!";
-		}
-}
+public abstract String filter();
 
 public abstract boolean comperable();
 

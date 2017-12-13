@@ -245,7 +245,7 @@ public class ReadCsv {
 	 *
 	 * @return List<List<Network>>
 	 */
-	public List<List<Network>> get_fileTable() {
+	public List<List<Network>> getDatabase() {
 		return database;
 	}
 

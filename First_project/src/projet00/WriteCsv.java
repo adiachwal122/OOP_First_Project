@@ -81,7 +81,7 @@ public class WriteCsv implements Write{
 		}
 	}
 	/*Get list of csv file*/
-	public List<List<Network>> get_fileTable() {
+	public List<List<Network>> getFileTable() {
 		return _fileTable;
 	}
 }

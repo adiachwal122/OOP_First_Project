@@ -18,6 +18,7 @@ public class WifiSpotLocation {
 		public List<Network> strongestSignal(int k) {
 			return database
 				.stream()
+				.parallel()
 				.sorted(Comparator.comparing(net -> -net.getSignal()))
 				.limit(k)
 				.collect(Collectors.toList());

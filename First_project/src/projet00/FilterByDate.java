@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 public class FilterByDate extends Filter{
+	/** The file. */
+	protected List<List<Network>> file;
 	/*The final database*/
 	protected List<Network> filteredFile;
 	/*Network object*/
@@ -19,7 +21,24 @@ public class FilterByDate extends Filter{
 		this.start = start;
 		this.end = end;
 	}
-
+	@Override
+	public String filter() {
+		if(!this.file.isEmpty()) {
+			for (List<Network> runList: this.file) {
+				if(runList.size() >= 1) {
+					for (Network network : runList) {
+						wifiSpot = network;
+						if(comperable()) {
+							this.filteredFile.add(network);
+						}
+					}
+				}	
+			}
+			return "Filtered Succeed!";
+		}else {
+			return "Database is empty!";
+			}
+	}
 	@Override
 	public boolean comperable() {
 		try {
@@ -37,6 +56,6 @@ public class FilterByDate extends Filter{
 	
 	@Override
 	public List<Network> getFilteredFile() {
-		return filteredFile;
+		return this.filteredFile;
 	}
 }

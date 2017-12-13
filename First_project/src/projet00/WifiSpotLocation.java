@@ -9,6 +9,7 @@ public class WifiSpotLocation {
 
 	public WifiSpotLocation(List<Network> macFiltered) {
 		this.database = macFiltered;
+		
 	}
 		/**
 		 * Returns the k rows with the highest y values.
@@ -23,4 +24,5 @@ public class WifiSpotLocation {
 				.limit(k)
 				.collect(Collectors.toList());
 	}
+		
 }

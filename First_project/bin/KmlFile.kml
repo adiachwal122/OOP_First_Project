@@ -2,393 +2,68 @@
 <ns2:kml xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:ns2="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
     <ns2:Document>
         <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Bezeq-NGN_E9CBFB</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: cc:b2:55:e9:cb:fc
-Frequncy: 6
-Signal: -68</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10221_1448394
-Frequncy: 0
-Signal: -69</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>ester10</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: c0:ac:54:f5:b5:7b
-Frequncy: 1
-Signal: -73</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>HOTBOX-Tatyana</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: d4:7b:b0:79:ca:1e
-Frequncy: 1
-Signal: -74</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Ness</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: c4:12:f5:f7:4a:40
-Frequncy: 8
-Signal: -77</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>dani2305</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: e0:ce:c3:1a:31:75
-Frequncy: 6
-Signal: -79</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>igor</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 14:ae:db:44:fa:bd
-Frequncy: 1
-Signal: -81</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>FHOME</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 14:cc:20:c8:83:9c
-Frequncy: 5
-Signal: -83</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Arnoldo 2.4</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 70:62:b8:31:80:4a
-Frequncy: 1
-Signal: -83</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
             <ns2:name>BezeqFree</ns2:name>
             <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 5a:ee:0c:3c:36:8e
-Frequncy: 1
-Signal: -83</ns2:description>
+            <ns2:description>MAC: 6a:12:f5:f9:5e:71
+Frequncy: 8
+Signal: -85</ns2:description>
             <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:10:00Z</ns2:when>
+                <ns2:when>27-10-2017T16:13:51Z</ns2:when>
             </ns2:TimeStamp>
             <ns2:Point>
-                <ns2:coordinates>34.87862948,32.09038727,56.0</ns2:coordinates>
+                <ns2:coordinates>34.81320794,32.16876665,37.0</ns2:coordinates>
             </ns2:Point>
         </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
+        <ns2:Placemark id="Lenovo PB2-690Y">
+            <ns2:name>BezeqFree</ns2:name>
             <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_855317
-Frequncy: 0
-Signal: -51</ns2:description>
+            <ns2:description>MAC: 6a:12:f5:f9:5e:71
+Frequncy: 8
+Signal: -90</ns2:description>
             <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
+                <ns2:when>27-10-2017T16:14:37Z</ns2:when>
             </ns2:TimeStamp>
             <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
+                <ns2:coordinates>34.81322274,32.16866695,38.0</ns2:coordinates>
             </ns2:Point>
         </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
+        <ns2:Placemark id="Lenovo PB2-690Y">
+            <ns2:name>BezeqFree</ns2:name>
             <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_855317
-Frequncy: 0
-Signal: -57</ns2:description>
+            <ns2:description>MAC: 6a:12:f5:f9:5e:71
+Frequncy: 8
+Signal: -85</ns2:description>
             <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
+                <ns2:when>27-10-2017T16:15:07Z</ns2:when>
             </ns2:TimeStamp>
             <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
+                <ns2:coordinates>34.81321713,32.16868528,40.0</ns2:coordinates>
             </ns2:Point>
         </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
+        <ns2:Placemark id="Lenovo PB2-690Y">
+            <ns2:name>BezeqFree</ns2:name>
             <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_855317
-Frequncy: 0
-Signal: -57</ns2:description>
+            <ns2:description>MAC: 6a:12:f5:f9:5e:71
+Frequncy: 8
+Signal: -85</ns2:description>
             <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
+                <ns2:when>27-10-2017T16:15:52Z</ns2:when>
             </ns2:TimeStamp>
             <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
+                <ns2:coordinates>34.8109599,32.16874744,41.0</ns2:coordinates>
             </ns2:Point>
         </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
+        <ns2:Placemark id="Lenovo PB2-690Y">
+            <ns2:name>BezeqFree</ns2:name>
             <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_855317
-Frequncy: 0
-Signal: -65</ns2:description>
+            <ns2:description>MAC: 6a:12:f5:f9:5e:71
+Frequncy: 8
+Signal: -85</ns2:description>
             <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
+                <ns2:when>27-10-2017T16:16:22Z</ns2:when>
             </ns2:TimeStamp>
             <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_855317
-Frequncy: 0
-Signal: -65</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10192_1276262
-Frequncy: 0
-Signal: -67</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_855317
-Frequncy: 0
-Signal: -69</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10192_1276262
-Frequncy: 0
-Signal: -71</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>YICarCam_f581fb</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 58:70:c6:f5:81:fb
-Frequncy: 6
-Signal: -73</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>YICarCam_f581fb</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 58:70:c6:f5:81:fb
-Frequncy: 6
-Signal: -73</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:20:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.85336222,32.12114107,35.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_2147483647
-Frequncy: 0
-Signal: -51</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_861581
-Frequncy: 0
-Signal: -51</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>Partner</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 42501_10131_861579
-Frequncy: 0
-Signal: -59</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name></ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 88:dc:96:17:c0:9e
-Frequncy: 6
-Signal: -71</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name></ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 88:dc:96:17:c0:9e
-Frequncy: 6
-Signal: -71</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>EF_Guest</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 56:d9:e7:d7:c6:14
-Frequncy: 1
-Signal: -72</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>EF_Guest</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 56:d9:e7:d7:c6:14
-Frequncy: 1
-Signal: -72</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>WiFi01</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 84:18:3a:38:5c:68
-Frequncy: 3
-Signal: -73</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>PlariumGuests</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 84:18:3a:78:5c:68
-Frequncy: 3
-Signal: -73</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
-            </ns2:Point>
-        </ns2:Placemark>
-        <ns2:Placemark id="ONEPLUS A3003">
-            <ns2:name>elastifile</ns2:name>
-            <ns2:open>1</ns2:open>
-            <ns2:description>MAC: 46:d9:e7:d7:c6:14
-Frequncy: 1
-Signal: -73</ns2:description>
-            <ns2:TimeStamp>
-                <ns2:when>2017-10-28T20:30:00Z</ns2:when>
-            </ns2:TimeStamp>
-            <ns2:Point>
-                <ns2:coordinates>34.80946799,32.16174181,38.0</ns2:coordinates>
+                <ns2:coordinates>34.80988697,32.16763949,45.0</ns2:coordinates>
             </ns2:Point>
         </ns2:Placemark>
     </ns2:Document>

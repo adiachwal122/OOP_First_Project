@@ -12,8 +12,19 @@ public class Network {
 	
 	/**
 	 * Instantiates a new network.
+	 * Null Network
 	 */
 	public Network() {
+		this.mac = "NaN";
+		this.ssid = "NaN";
+		this.frequncy = 0;
+		this.signal = 0;
+		// dd/MM/yyyy HH:mm:ss
+		this.time = "01//01//1000 00:00:00";
+		this.id = "NaN";
+		this.lat = 0;
+		this.lon = 0;
+		this.alt = 0;
 	}
 	/**
 	 * Instantiates a new network.
@@ -34,7 +45,8 @@ public class Network {
 		this.ssid = (!nSsid.equals(null)) ? nSsid:"NaN";
 		this.frequncy = (nFrequncy != 0) ? nFrequncy:0;
 		this.signal = (nSignal != 0) ? nSignal:0;
-		this.time = (!nTime.equals(null)) ? nTime:"NaN";;
+		// dd/MM/yyyy HH:mm:ss
+		this.time = (!nTime.equals(null)) ? nTime:"01//01//1000 00:00:00";
 		this.id = (!nId.equals(null)) ? nId:"NaN";
 		this.lat = (nLat != 0) ? nLat:0;
 		this.lon = (nLon != 0) ? nLon:0;
@@ -54,6 +66,11 @@ public class Network {
 		this.lat = (nLat != 0) ? nLat:0;
 		this.lon = (nLon != 0) ? nLon:0;
 		this.alt = (nAlt != 0) ? nAlt:0;
+		this.ssid = "NaN";
+		this.id = "NaN";
+		this.frequncy = 0;
+		this.signal = 0;
+		this.time = "dd/MM/yyyy HH:mm:ss";
 	}
 	/**
 	 * Gets the id.

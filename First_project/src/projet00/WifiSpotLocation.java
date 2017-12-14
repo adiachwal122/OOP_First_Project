@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WifiSpotLocation {
+	/*Database - from user*/
 	private List<Network> database;
 
 	public WifiSpotLocation(List<Network> macFiltered) {
 		this.database = macFiltered;
-		average(macFiltered);
 	}
 		/**
 		 * Returns the k rows with the highest signal values.
@@ -24,8 +24,35 @@ public class WifiSpotLocation {
 				.limit(k)
 				.collect(Collectors.toList());
 	}
+	/*Get weighted average cordinate of specific Network*/
+	public Network WeightedAverage() {
+		try {
+		/*List of 3 sorted database by signal*/
+		List<Network> data = strongestSignal(3);
+		double avgAlt = 0, avgLon = 0, avgLat = 0,wieght = 0;;
+		/*Sum the Alt, Lon and Lat from the list*/
+		for (Network net : data) {
+			double wAlt = net.getAlt() * (1/Math.pow(net.getSignal(), 2));
+			double wLon = net.getLon() * (1/Math.pow(net.getSignal(), 2));
+			double wLat = net.getLat() * (1/Math.pow(net.getSignal(), 2));
+			wieght += 1/Math.pow(net.getSignal(), 2);
+			avgAlt += wAlt;
+			avgLon += wLon;
+			avgLat += wLat;
+		}
+		/*Get the average*/
+		avgAlt /= wieght;
+		avgLon /= wieght;
+		avgLat /= wieght;
+		/*Get Network element*/
+		return new Network(data.get(0).getMac(), avgLat, avgLon, avgAlt);
+		}catch (ArithmeticException ex) {
+			ex.printStackTrace();
+			return new Network();
+		}
+		}
 	/*Get average Network*/
-	public Network average(List<Network> listMAC) {
+	public Network Average() {
 		/*List of 3 sorted database by signal*/
 		List<Network> data = strongestSignal(3);
 		double avgAlt = 0, avgLon = 0, avgLat = 0;
@@ -40,6 +67,6 @@ public class WifiSpotLocation {
 		avgLon /= data.size();
 		avgLat /= data.size();
 		/*Get Network element*/
-		return new Network(listMAC.get(0).getMac(), avgLat, avgLon, avgAlt);	
-		}
+		return new Network(data.get(0).getMac(), avgLat, avgLon, avgAlt);
+	}
 }

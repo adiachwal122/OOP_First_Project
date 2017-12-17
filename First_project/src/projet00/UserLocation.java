@@ -1,9 +1,17 @@
 package projet00;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 
 public class UserLocation {
 	/*Database - from user*/
@@ -11,28 +19,39 @@ public class UserLocation {
 	/*Filtered database by strongest signal*/
 	private List<Network> filteredDatbase;
 	
-	HashMap<Network, Double> piMap = new HashMap<>();
+	HashMap<Network, Double> piMap;
 	
 	public UserLocation(List<Network> file) {
-		this.database = file;
+		this.database = sort(file);
+		this.filteredDatbase = new ArrayList<>();
+		this.piMap = new HashMap<>();
 	}
-	/**
-	 * Returns the k rows with the highest signal values.
-	 * Implemented using Streams.
-	 * https://github.com/erelsgl/ariel-oop-course/blob/master/YomHamishi/src/lesson7/WifiDatabase.java
-	 */
-	public List<Network> strongestSignal(int k) {
-		return database
-			.stream()
-			.parallel()
-			.sorted(Comparator.comparing(net -> piMap.get(net)))
-			.limit(k)
-			.collect(Collectors.toList());
-	} 
 	
-	public Network WeightedCenter() {
+	public Network WeightedCenter(String MAC_1, int signal_1, String MAC_2, int signal_2, String MAC_3,int signal_3) {
+		HashMap<String, Integer> userMAC = new HashMap<>();
+		userMAC.put(MAC_1, signal_1);
+		userMAC.put(MAC_2, signal_2);
+		userMAC.put(MAC_3, signal_3);
 		
-		return new Network();
+		List<List<Network>> listOfMAC = getOrder();
+		listOfMAC = threeNetwork(listOfMAC,new String[] {MAC_1, MAC_2, MAC_3});
+		Network temp;
+		
+		for (List<Network> list : listOfMAC) {
+			if(!list.isEmpty()) {
+				double pi = 1, weightOfeachTest = 1;
+				temp = list.get(0);
+				for (Network net : list) {
+					weightOfeachTest *= weight( diff(net, userMAC.get(net.getMac())), userMAC.get(net.getMac()) );
+				}
+				pi *= weightOfeachTest;
+				filteredDatbase.add(temp);
+				piMap.put(temp, pi);
+			}
+		}
+		if(filteredDatbase.size()>3) filteredDatbase = strongestSignal(3);
+		WifiSpotLocation totalWeightCenter = new WifiSpotLocation(filteredDatbase);
+		return totalWeightCenter.WeightedAverage();
 	}
 	
 	private double diff(Network point , double input) {
@@ -43,12 +62,72 @@ public class UserLocation {
 		return 10_000/(Math.pow(diff, 0.4) * Math.pow(input, 0.4));
 	}
 	
-	private double pi(double weight_1, double weight_2, double weight_3) {
-		return weight_1*weight_2*weight_3;
+	private List<Network> sort(List<Network> file){
+		//Sort by Date
+			Collections.sort(database,new Comparator<Network>() {
+				public int compare(Network wifiLine1, Network wifiLine2) {
+					try {
+						DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+						Date wifi1Time =  df1.parse(wifiLine1.getTime().trim());
+						Date wifi2Time =  df1.parse(wifiLine2.getTime().trim());
+						if(wifi2Time.before(wifi1Time))
+							return -1;
+						if(wifi1Time.equals(wifi2Time))
+							return 0;
+						return 1;
+					}catch (ParseException e) {
+						e.getCause();
+						return 0;
+					}
+				}
+			});
+			return database;
+	}
+	/**
+	 * Returns the k rows with the highest signal values.
+	 * Implemented using Streams.
+	 * https://github.com/erelsgl/ariel-oop-course/blob/master/YomHamishi/src/lesson7/WifiDatabase.java
+	 */
+	private List<Network> strongestSignal(int k) {
+		return filteredDatbase
+			.stream()
+			.parallel()
+			.sorted(Comparator.comparing(net -> piMap.get(net)))
+			.limit(k)
+			.collect(Collectors.toList());
+	} 
+	
+	private List<List<Network>> getOrder(){
+		List<List<Network>> listOfMAC = new ArrayList<>();
+		List<Network> tempList= new ArrayList<>();
+		String time = database.get(0).getTime();
+		for (Network network : database) {
+			if(network.getTime().equals(time)) {
+				tempList.add(network);
+			}else {
+				time = network.getTime();
+				listOfMAC.add(tempList);
+				tempList.clear();
+				tempList.add(network);
+			}
+		}
+		return listOfMAC;
 	}
 	
-	private double weight(double pi_1, double pi_2, double pi_3) {
-		return pi_1*pi_2*pi_3;
+	private List<List<Network>> threeNetwork(List<List<Network>> listOfMAC, String[] mac){
+		List<List<Network>> checklist = new ArrayList<>();
+		for (List<Network> list : checklist) {
+			if (list.size()==1) {
+				for (String MAC : mac) {
+					if(!list.get(0).getMac().equals(MAC)) list.add(new Network(MAC, list.get(0).getLat(), list.get(0).getLon(), list.get(0).getAlt()));
+				}
+			}else if(list.size()==2) {
+				for (String MAC : mac) {
+					if(!list.get(0).getMac().equals(MAC) || !list.get(1).getMac().equals(MAC)) 
+						list.add(new Network(MAC, list.get(0).getLat(), list.get(0).getLon(), list.get(0).getAlt()));
+				}
+			}
+		}
+		return checklist;
 	}
-	
 }

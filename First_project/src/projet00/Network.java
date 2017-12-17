@@ -7,7 +7,6 @@ public class Network {
 	
 	private String ssid, mac ,id , time;
 	double lat, lon ,alt;
-	
 	private int frequncy, signal;
 	
 	/**

@@ -11,19 +11,6 @@ public class WifiSpotLocation {
 	public WifiSpotLocation(List<Network> macFiltered) {
 		this.database = macFiltered;
 	}
-		/**
-		 * Returns the k rows with the highest signal values.
-		 * Implemented using Streams.
-		 * https://github.com/erelsgl/ariel-oop-course/blob/master/YomHamishi/src/lesson7/WifiDatabase.java
-		 */
-		public List<Network> strongestSignal(int k) {
-			return database
-				.stream()
-				.parallel()
-				.sorted(Comparator.comparing(net -> -net.getSignal()))
-				.limit(k)
-				.collect(Collectors.toList());
-	}
 	/*Get weighted average cordinate of specific Network*/
 	public Network WeightedAverage() {
 		try {
@@ -69,4 +56,17 @@ public class WifiSpotLocation {
 		/*Get Network element*/
 		return new Network(data.get(0).getMac(), avgLat, avgLon, avgAlt);
 	}
+	/**
+	 * Returns the k rows with the highest signal values.
+	 * Implemented using Streams.
+	 * https://github.com/erelsgl/ariel-oop-course/blob/master/YomHamishi/src/lesson7/WifiDatabase.java
+	 */
+	public List<Network> strongestSignal(int k) {
+		return database
+			.stream()
+			.parallel()
+			.sorted(Comparator.comparing(net -> -net.getSignal()))
+			.limit(k)
+			.collect(Collectors.toList());
+}
 }

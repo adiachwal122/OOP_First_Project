@@ -1,22 +1,29 @@
 package projet00;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class FilteredByID extends Filter{
-	/** The file. */
+public class RemoveDuplicate extends Filter{
+	/** The file*/
 	protected List<List<Network>> file;
 	/*The final database*/
 	protected List<Network> filteredFile;
 	/*Network object*/
 	protected Network wifiSpot;
-	/*Parameter from user*/
-	private String parameter;
-	
-	public FilteredByID(List<List<Network>> csvList ,String parameter) {
+	/*HashMap of Object*/
+	private HashMap<String, Integer> keyOfMAC;
+	/*
+	 * Get list, of list of Object (Network) and copy the object ,without repeted MAC
+	 * @author adiel, adi and yuda
+	 * @param List<List<Network>> List
+	 *  */
+	public RemoveDuplicate(List<List<Network>> csvList) {
 		this.file = csvList;
-		this.filteredFile = null;
-		this.parameter = parameter;
+		this.filteredFile = new ArrayList<>();
+		keyOfMAC = new HashMap<>();
 	}
+
 	@Override
 	public String filter() {
 		if(!this.file.isEmpty()) {
@@ -36,13 +43,16 @@ public class FilteredByID extends Filter{
 			}
 	}
 
-
 	@Override
 	public boolean comperable() {
-		return wifiSpot.getSsid().equals(parameter.trim());
+		if(keyOfMAC.isEmpty()||!keyOfMAC.containsKey(wifiSpot.getMac())) return true;
+		else return false;
+		
 	}
+
 	@Override
 	public List<Network> getFilteredFile() {
 		return this.filteredFile;
 	}
+
 }

@@ -39,6 +39,7 @@ public class Network {
 	 * @param String alt
 	 */
 	public Network(String nSsid, String nMac, int nFrequncy, int nSignal, 
+<<<<<<< HEAD
 			String nTime,String nId, double nLat, double nLon, double nAlt) {
 		this.mac = (!nMac.equals(null)) ? nMac: "NaN";
 		this.ssid = (!nSsid.equals(null)) ? nSsid:"NaN";
@@ -50,6 +51,18 @@ public class Network {
 		this.lat = (nLat != 0) ? nLat:0;
 		this.lon = (nLon != 0) ? nLon:0;
 		this.alt = (nAlt != 0) ? nAlt:0;
+=======
+			String nTime,String nId, String nLat, String nLon, String nAlt) {
+		this.mac = (!nMac.equals(null)) ? nMac: "NaN";
+		this.ssid = (!nSsid.equals(null)) ? nSsid:"NaN";
+		this.frequncy = (nFrequncy != 0) ? nFrequncy:0;
+		this.signal = (nSignal != 0) ? nSignal:0;
+		this.time = nTime;
+		this.id = (!nId.equals(null)) ? nId:"NaN";
+		this.lat = (!nLat.equals(null)) ? nLat:"NaN";
+		this.lon = (!nLon.equals(null)) ? nLon:"NaN";
+		this.alt = (!nAlt.equals(null)) ? nAlt:"NaN";
+>>>>>>> refs/remotes/origin/master
 	}
 	/**
 	 * Instantiates a new network.

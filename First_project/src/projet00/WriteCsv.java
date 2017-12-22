@@ -3,24 +3,22 @@ package projet00;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WriteCsv.
+ * The class gets List<List<Network>> ,which provided by ReadCsv file.
  */
-public class WriteCsv {
-	
+public class WriteCsv implements Write{
 	/** The file table. */
 	private List<List<Network>> _fileTable;
-	
 	/**
 	 * Instantiates a new write csv.
 	 *
 	 * @author adiel ,adi and yuda
 	 */
 	public WriteCsv(){
-		
 		this._fileTable = null;
 	}
 	
@@ -29,13 +27,18 @@ public class WriteCsv {
 	 *
 	 * @author adiel ,adi and yuda
 	 * @param csvList the csv list
-	 * @return csv file
 	 * @throws IndexOutOfBoundsException the index out of bounds exception
 	 */
 	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException  {
+		this._fileTable = csvList;
+		write();
+	}
+	
+	@Override
+	public String write() {
 		try {
-			this._fileTable = csvList;
-			BufferedWriter makeFile = new BufferedWriter(new FileWriter("final_csv.csv"));
+			Date date = new Date();
+			BufferedWriter makeFile = new BufferedWriter(new FileWriter("final_csv - " + date.getTime() +".csv"));
 			String [] firstHeader = {"Time", "ID", "Lat", "Lon", "Alt", "WiFi networks"},
 					secondHeader = {"SSID", "MAC", "Frequncy", "Signal"};
 			//First required titles
@@ -52,6 +55,10 @@ public class WriteCsv {
 			//Write to file
 			if(this._fileTable.size() != 0) {
 				for (List<Network> runList: this._fileTable) {
+<<<<<<< HEAD
+					if(runList.size() >= 1) {
+						makeFile.write(runList.get(0).getTime() + " , " + runList.get(0).getId() + " , "
+=======
 					int count = 0;
 					if(!runList.isEmpty()) {
 						if(runList.size() > 10) {
@@ -60,29 +67,36 @@ public class WriteCsv {
 									+ runList.get(0).getAlt() + " , " + 10);
 						}else {
 							makeFile.write(runList.get(0).getTime() + " , " + runList.get(0).getId() + " , "
+>>>>>>> refs/remotes/origin/master
 									+runList.get(0).getLat() + " , " + runList.get(0).getLon() + " , "
 									+ runList.get(0).getAlt() + " , " + runList.size());
-						}
 						for (Network network : runList) {
-							if(count >=10) break;
-							if(runList.size() <= 10 ) {
 								makeFile.write( " , " + network.getSsid() + " , " + network.getMac() + " , " 
 										+ network.getFrequncy() + " , " + network.getSignal());
-							}else{
-								count++;
-								makeFile.write( " , " + network.getSsid() + " , " + network.getMac() + " , " 
-										+ network.getFrequncy() + " , " + network.getSignal());
-							}
 						}
 						makeFile.newLine();
 					}
 				}
-			}
-			//close session
-			makeFile.close();
+				//close session
+				makeFile.close();
+				return "Csv created successfully!";
+				}else {
+					//close session
+					makeFile.close();
+					return "Database is empty!";
+				}
+			
 		}catch(IndexOutOfBoundsException | IOException | NullPointerException e) {
+<<<<<<< HEAD
+			return  "Sorry, somethings went wrong! \nPlease check if your file is corrupted" + e.getCause();
+=======
 			e.printStackTrace();
 			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
+>>>>>>> refs/remotes/origin/master
 		}
+	}
+	/*Get list of csv file*/
+	public List<List<Network>> getFileTable() {
+		return _fileTable;
 	}
 }

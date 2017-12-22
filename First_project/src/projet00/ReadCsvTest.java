@@ -20,7 +20,7 @@ public class ReadCsvTest {
 		String file = "28.10" ;
 		try {
 			ReadCsv a = new ReadCsv(file);
-			assertEquals(23, a.get_fileTable().size());
+			assertEquals(23, a.getDatabase().size());
 		}
 		catch (IOException e1) {
 			fail("Invalid number of lines");

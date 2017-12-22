@@ -1,24 +1,30 @@
 package projet00;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Network.
  */
 public class Network {
-
 	
-	private String ssid, mac ,id , time , lat, lon ,alt;
-	
-	
+	private String ssid, mac ,id , time;
+	double lat, lon ,alt;
 	private int frequncy, signal;
 	
-
 	/**
 	 * Instantiates a new network.
+	 * Null Network
 	 */
 	public Network() {
+		this.mac = "NaN";
+		this.ssid = "NaN";
+		this.frequncy = 0;
+		this.signal = 0;
+		// dd/MM/yyyy HH:mm:ss
+		this.time = "01//01//1000 00:00:00";
+		this.id = "NaN";
+		this.lat = 0;
+		this.lon = 0;
+		this.alt = 0;
 	}
-	
 	/**
 	 * Instantiates a new network.
 	 * @author adiel ,adi and yuda
@@ -26,14 +32,26 @@ public class Network {
 	 * @param String n mac
 	 * @param Int frequncy
 	 * @param Int signal
-	 * @param String n time
+	 * @param String time
 	 * @param String id
 	 * @param String lat
 	 * @param String lon
 	 * @param String alt
-	 * @param Ssid, Mac, Frequncy, Signal, Time, Id, Lat, Lon, Alt
 	 */
 	public Network(String nSsid, String nMac, int nFrequncy, int nSignal, 
+<<<<<<< HEAD
+			String nTime,String nId, double nLat, double nLon, double nAlt) {
+		this.mac = (!nMac.equals(null)) ? nMac: "NaN";
+		this.ssid = (!nSsid.equals(null)) ? nSsid:"NaN";
+		this.frequncy = (nFrequncy != 0) ? nFrequncy:0;
+		this.signal = (nSignal != 0) ? nSignal:0;
+		// dd/MM/yyyy HH:mm:ss
+		this.time = (!nTime.equals(null)) ? nTime:"01//01//1000 00:00:00";
+		this.id = (!nId.equals(null)) ? nId:"NaN";
+		this.lat = (nLat != 0) ? nLat:0;
+		this.lon = (nLon != 0) ? nLon:0;
+		this.alt = (nAlt != 0) ? nAlt:0;
+=======
 			String nTime,String nId, String nLat, String nLon, String nAlt) {
 		this.mac = (!nMac.equals(null)) ? nMac: "NaN";
 		this.ssid = (!nSsid.equals(null)) ? nSsid:"NaN";
@@ -44,8 +62,28 @@ public class Network {
 		this.lat = (!nLat.equals(null)) ? nLat:"NaN";
 		this.lon = (!nLon.equals(null)) ? nLon:"NaN";
 		this.alt = (!nAlt.equals(null)) ? nAlt:"NaN";
+>>>>>>> refs/remotes/origin/master
 	}
-
+	/**
+	 * Instantiates a new network.
+	 * @author adiel ,adi and yuda
+	 * @param nmac
+	 * @param nsignal
+	 * @param nlat
+	 * @param nlon
+	 * @param nalt
+	 */
+	public Network(String nMac, double nLat, double nLon, double nAlt) {
+		this.mac = (!nMac.equals(null)) ? nMac: "NaN";
+		this.lat = (nLat != 0) ? nLat:0;
+		this.lon = (nLon != 0) ? nLon:0;
+		this.alt = (nAlt != 0) ? nAlt:0;
+		this.ssid = "NaN";
+		this.id = "NaN";
+		this.frequncy = 0;
+		this.signal = 0;
+		this.time = "dd/MM/yyyy HH:mm:ss";
+	}
 	/**
 	 * Gets the id.
 	 *
@@ -54,7 +92,6 @@ public class Network {
 	public String getId() {
 		return id;
 	}
-	
 	/**
 	 * Gets the time.
 	 *
@@ -69,7 +106,7 @@ public class Network {
 	 *
 	 * @return the lat
 	 */
-	public String getLat() {
+	public double getLat() {
 		return lat;
 	}
 	
@@ -78,7 +115,7 @@ public class Network {
 	 *
 	 * @return the lon
 	 */
-	public String getLon() {
+	public double getLon() {
 		return lon;
 	}
 	
@@ -87,7 +124,7 @@ public class Network {
 	 *
 	 * @return the alt
 	 */
-	public String getAlt() {
+	public double getAlt() {
 		return alt;
 	}
 	

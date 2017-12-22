@@ -2,41 +2,69 @@ package projet00;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WriteKml.
+ * The class gets List<String []> ,HashMap<String, Integer> which provided by Filter
+ * return KML file for Google Earth
  */
-public class WriteKml {
-	
-
+public class WriteKml implements Write{
+	List<Network> listOfNet;
 	/**
 	 * Instantiates a new write kml.
 	 */
 	public WriteKml() {
 
 	}
-
 	/**
 	 * Instantiates a new write kml.
 	 *
 	 * @author adiel ,adi and yuda
 	 * @param kmlList the kml list
-	 * @param keyIndex {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
-	 * @return Kml file
+	 * @param keyIndex 
+	 * {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
 	 */
-
-	public WriteKml(List<String []> kmlList ,HashMap<String, Integer> keyIndex){
+	public WriteKml(List<Network> kmlList){
+		this.listOfNet = kmlList;
+		System.out.println(write());
+	}
+	/*Convert date from String to TimeStame Signature
+	 * @param String time
+	 * @return String 
+	 * */
+	public String timeStampFormate(String time) {
+		String[] getTime = time.split("\\D");
+		String newTimeFormate = getTime[2] + "-" + getTime[1] + "-" +getTime[0] + "T" + 
+		getTime[3] + ":" + getTime[4] + ":" + getTime[5] + "Z";
+		
+		return newTimeFormate;
+	}
+	/*Implement Write class
+	 * */
+	@Override
+	public String write() {
 		try {
-			List<String []> listOfNet = kmlList;
+			Date timeDate = new Date();
 			final Kml writekml = new Kml();
 			Document document = writekml.createAndSetDocument();
+<<<<<<< HEAD
+			for (Network wifiSpot : listOfNet) {
+				Placemark placemark = document.createAndAddPlacemark()
+					.withName(wifiSpot.getSsid()).withOpen(Boolean.TRUE);
+				placemark.withId(wifiSpot.getId()).withDescription("MAC: " + wifiSpot.getMac() +
+							"\nFrequncy: " + wifiSpot.getFrequncy() + 
+							"\nSignal: " + wifiSpot.getSignal())
+				.createAndSetPoint().addToCoordinates(wifiSpot.getLon()
+													, wifiSpot.getLat() 
+													,wifiSpot.getAlt());
+				placemark.createAndSetTimeStamp().withWhen(timeStampFormate(wifiSpot.getTime()));			
+=======
 			for (String[] list : listOfNet) {
 
 				if(list != null) {
@@ -52,17 +80,16 @@ public class WriteKml {
 				placemark.createAndSetTimeStamp().withWhen(timeStampFormate(list[keyIndex.get("Time")]));			
 				}
 				
+>>>>>>> refs/remotes/origin/master
 			}
-			
-			writekml.marshal(new File("KmlFile.kml"));
-			System.out.println("Kml created!!");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
-		}catch (NullPointerException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			writekml.marshal(new File("KmlFile - " + timeDate.getTime() + ".kml"));
+			return "Kml created!!";
+		} catch (FileNotFoundException | NullPointerException e) {
+			return e.getMessage();
 		}
+<<<<<<< HEAD
+		
+=======
 	}
 	/*
 	 * Change formate for TimeStamp 
@@ -81,5 +108,6 @@ public class WriteKml {
 	//Check if file type is unauthorized 
 	public void unauthorizedFile(String unauthorizedFile) {
 		System.err.println(unauthorizedFile+" - " +"Unauthorized File, please change the file to authorized file (Authorize csv)!"); 
+>>>>>>> refs/remotes/origin/master
 	}
 }

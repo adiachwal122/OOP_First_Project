@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,11 +23,17 @@ import static java.nio.file.StandardCopyOption.*;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ReadCsv.
+ * This class gets csv file from WiggleWif only (path to file or folder)
  */
 public class ReadCsv {
+<<<<<<< HEAD
+	/*Csv database*/
+	private List<List<Network>> database = new ArrayList<List<Network>>();
+	/*Object of type Network*/
+=======
 	private List<List<Network>> _fileTable = new ArrayList<List<Network>>();;
+>>>>>>> refs/remotes/origin/master
 	private Network wifiObj;
-
 
 	/**
 	 * Instantiates a new read csv.
@@ -32,18 +42,15 @@ public class ReadCsv {
 	 */
 	
 	public ReadCsv() throws IOException {
-		System.err.println("No path selected!");
 	}
-
 	/**
 	 * Instantiates a new read csv.
 	 *
 	 * @author adiel, adi and yuda
-	 * @param String path
-	 * @return list of csv file
+	 * @param path
+	 * {@link} https://www.tutorialspoint.com/java/io/file_listfiles.htm
+	 * {@link} http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @see https://www.tutorialspoint.com/java/io/file_listfiles.htm
-	 * @see http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
 	 */
 	public ReadCsv(String path) throws IOException {
 		try {
@@ -59,9 +66,14 @@ public class ReadCsv {
 			//Folder is empty
 			if(filesInFolder.isEmpty()) System.err.println("Folder is empty!");
 
+<<<<<<< HEAD
+			//read all file in folder
+			else while(!filesInFolder.isEmpty()) {
+=======
 			//show all file in folder or read file
 			else if (filesInFolder.size()> 1) {
 				while(!filesInFolder.isEmpty()) {
+>>>>>>> refs/remotes/origin/master
 					System.out.println(filesInFolder.get(0).getName());
 					String typeOfFile = fileType(filesInFolder.get(0).getName());
 					String pathOfEachFile = filesInFolder.get(0).getPath();
@@ -72,7 +84,7 @@ public class ReadCsv {
 
 					filesInFolder.remove(0);
 				}
-			}
+			
 		}
 		catch(IOException e){
 			System.out.println(e.getMessage());
@@ -81,9 +93,7 @@ public class ReadCsv {
 
 	/**
 	 * Csv input.
-	 *
-	 * @param String csvPath
-	 * @return copy csv file to workspace
+	 * @param csvPath
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void csvInput(String csvPath) throws IOException {
@@ -96,16 +106,14 @@ public class ReadCsv {
 			getOrder("temp_csv.csv");
 		}
 		catch(IOException e) {
-			System.out.println(e.getMessage());
-			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
+			e.printStackTrace();
+			System.out.println("\nSorry, somethings went wrong! \nPlease check if your file is corrupted");
 		}
 	}
-	
 	/**
 	 * Order the csv.
 	 *
-	 * @param String path
-	 * @return list of csv file
+	 * @param path
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void getOrder(String path) throws IOException{
@@ -114,9 +122,15 @@ public class ReadCsv {
 			FileReader readFile = new FileReader(path);
 			BufferedReader fileOpen = new BufferedReader(readFile);
 			String model = "NaN" , stop = null;
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/master
 			//Temp list
 			List<Network> line_of_table = new ArrayList<Network>();
+			//Unsorted list
+			List<List<Network>> fileTable = new ArrayList<List<Network>>();
+
 
 			//Title index
 			HashMap<String, Integer>keyIndex = new HashMap<String,Integer>();
@@ -143,7 +157,11 @@ public class ReadCsv {
 			}
 
 			stop = fileOpen.readLine();
+<<<<<<< HEAD
+			if(stop != null) orFile = stop.split(",");
+=======
 			if(stop != null) orFile = stop.split(",");	
+>>>>>>> refs/remotes/origin/master
 			
 			//Create table
 			while(stop != null) {
@@ -152,10 +170,10 @@ public class ReadCsv {
 						Integer.parseInt(orFile[keyIndex.get("Channel")]) , 
 						Integer.parseInt(orFile[keyIndex.get("RSSI")]), 
 						orFile[keyIndex.get("FirstSeen")], model, 
-						orFile[keyIndex.get("CurrentLatitude")] ,
-						orFile[keyIndex.get("CurrentLongitude")] ,
-						orFile[keyIndex.get("AltitudeMeters")]);
-
+						Double.parseDouble(orFile[keyIndex.get("CurrentLatitude")]) ,
+						Double.parseDouble(orFile[keyIndex.get("CurrentLongitude")]) ,
+						Double.parseDouble(orFile[keyIndex.get("AltitudeMeters")]));
+				
 				line_of_table.add(wifiObj);
 				stop = fileOpen.readLine();
 				if(stop != null) orFile = stop.split(",");
@@ -165,18 +183,15 @@ public class ReadCsv {
 			int fromIndex = 0;
 			for (int i = 0 ; i < line_of_table.size()-1 ; i++) {
 				if(!line_of_table.get(i).getTime().trim().equals(line_of_table.get(i+1).getTime().trim())) {
-					this._fileTable.add(line_of_table.subList(fromIndex, i));
+					fileTable.add(line_of_table.subList(fromIndex, i));
 					fromIndex = i+1;
 				}
 			}
 
 			if(fromIndex == 0 || fromIndex < line_of_table.size())
-				this._fileTable.add(line_of_table.subList(fromIndex, line_of_table.size()));
-
-			//			System.out.println(this._fileTable.toString());
-
+				fileTable.add(line_of_table.subList(fromIndex, line_of_table.size()));
 			//Sort by signal
-			for (List<Network> obj : this._fileTable) {
+			for (List<Network> obj : fileTable) {
 				Collections.sort(obj,new Comparator<Network>() {
 					public int compare(Network wifi1, Network wifi2) {
 						if(Math.abs(wifi1.getSignal()) < Math.abs(wifi2.getSignal()))
@@ -187,11 +202,37 @@ public class ReadCsv {
 					}
 				});
 			}
+			
+			//Sort by Date
+			for (List<Network> obj : fileTable) {
+				Collections.sort(obj,new Comparator<Network>() {
+					public int compare(Network wifiLine1, Network wifiLine2) {
+						try {
+							DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+							Date wifi1Time =  df1.parse(wifiLine1.getTime().trim());
+							Date wifi2Time =  df1.parse(wifiLine2.getTime().trim());
+							if(wifi2Time.before(wifi1Time))
+								return -1;
+							if(wifi1Time.equals(wifi2Time))
+								return 0;
+							return 1;
+						}catch (ParseException e) {
+							e.getCause();
+							return 0;
+						}
+					}
+				});
+				}
 			//			System.out.println(this._fileTable.toString());
 
-			for (List<Network> net : this._fileTable) {
+			//Max of 10 element in each sublist
+			for (List<Network> net : fileTable) {
 				if(net.size() > 10) {
-					net = net.subList(0, 9);
+					this.database.add(net.stream()
+							.limit(10)
+							.collect(Collectors.toList()));
+				}else {
+					this.database.add(net);
 				}
 			}
 
@@ -210,11 +251,10 @@ public class ReadCsv {
 	
 	/**
 	 * Gets the file table.
-	 *
-	 * @return List<List<Network>>
+	 * @return database
 	 */
-	public List<List<Network>> get_fileTable() {
-		return _fileTable;
+	public List<List<Network>> getDatabase() {
+		return database;
 	}
 
 	/**
@@ -232,6 +272,7 @@ public class ReadCsv {
 
 	/**
 	 * Unauthorized file.
+	 * @param unauthorizedFile
 	 */
 	//Check if file type is unauthorized 
 	public void unauthorizedFile(String unauthorizedFile) {

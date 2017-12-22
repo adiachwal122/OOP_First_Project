@@ -40,18 +40,15 @@ public class ReadCsv {
 	 */
 	
 	public ReadCsv() throws IOException {
-		System.err.println("No path selected!");
 	}
-
 	/**
 	 * Instantiates a new read csv.
 	 *
 	 * @author adiel, adi and yuda
-	 * @param String path
-	 * @return list of csv file
+	 * @param path
+	 * {@link} https://www.tutorialspoint.com/java/io/file_listfiles.htm
+	 * {@link} http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @see https://www.tutorialspoint.com/java/io/file_listfiles.htm
-	 * @see http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
 	 */
 	public ReadCsv(String path) throws IOException {
 		try {
@@ -89,9 +86,7 @@ public class ReadCsv {
 
 	/**
 	 * Csv input.
-	 *
-	 * @param String csvPath
-	 * @return copy csv file to workspace
+	 * @param csvPath
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void csvInput(String csvPath) throws IOException {
@@ -111,8 +106,7 @@ public class ReadCsv {
 	/**
 	 * Order the csv.
 	 *
-	 * @param String path
-	 * @return list of csv file
+	 * @param path
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void getOrder(String path) throws IOException{
@@ -242,8 +236,7 @@ public class ReadCsv {
 	
 	/**
 	 * Gets the file table.
-	 *
-	 * @return List<List<Network>>
+	 * @return database
 	 */
 	public List<List<Network>> getDatabase() {
 		return database;
@@ -264,6 +257,7 @@ public class ReadCsv {
 
 	/**
 	 * Unauthorized file.
+	 * @param unauthorizedFile
 	 */
 	//Check if file type is unauthorized 
 	public void unauthorizedFile(String unauthorizedFile) {

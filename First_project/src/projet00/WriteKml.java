@@ -5,16 +5,14 @@ import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.List;
 
-import javax.print.attribute.standard.DateTimeAtCreation;
-
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WriteKml.
  * The class gets List<String []> ,HashMap<String, Integer> which provided by Filter
+ * return KML file for Google Earth
  */
 public class WriteKml implements Write{
 	List<Network> listOfNet;
@@ -24,21 +22,22 @@ public class WriteKml implements Write{
 	public WriteKml() {
 
 	}
-
 	/**
 	 * Instantiates a new write kml.
 	 *
 	 * @author adiel ,adi and yuda
 	 * @param kmlList the kml list
-	 * @param keyIndex {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
-	 * @return Kml file
+	 * @param keyIndex 
+	 * {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
 	 */
-
 	public WriteKml(List<Network> kmlList){
 		this.listOfNet = kmlList;
 		System.out.println(write());
 	}
-	
+	/*Convert date from String to TimeStame Signature
+	 * @param String time
+	 * @return String 
+	 * */
 	public String timeStampFormate(String time) {
 		String[] getTime = time.split("\\D");
 		String newTimeFormate = getTime[2] + "-" + getTime[1] + "-" +getTime[0] + "T" + 
@@ -46,7 +45,8 @@ public class WriteKml implements Write{
 		
 		return newTimeFormate;
 	}
-
+	/*Implement Write class
+	 * */
 	@Override
 	public String write() {
 		try {
@@ -67,7 +67,6 @@ public class WriteKml implements Write{
 			writekml.marshal(new File("KmlFile - " + timeDate.getTime() + ".kml"));
 			return "Kml created!!";
 		} catch (FileNotFoundException | NullPointerException e) {
-			// TODO Auto-generated catch block
 			return e.getMessage();
 		}
 		

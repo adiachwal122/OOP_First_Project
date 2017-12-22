@@ -15,12 +15,23 @@ public class FilterByDate extends Filter{
 	protected Network wifiSpot;
 	/*Parameter from user*/
 	private String start , end;
-	
+	/**
+	 * Instantiates a new filter by Date.
+	 *
+	 * @author adiel ,adi and yuda
+	 * @param csvList 
+	 * @param start
+	 * @param end
+	 */
 	public FilterByDate(List<List<Network>> csvList , String start , String end) {
 		super();
 		this.start = start;
 		this.end = end;
 	}
+	/*
+	 *After constract Filter by Date, run filter function 
+	 *@return String (Succed of Fail)
+	 */
 	@Override
 	public String filter() {
 		if(!this.file.isEmpty()) {
@@ -39,6 +50,14 @@ public class FilterByDate extends Filter{
 			return "Database is empty!";
 			}
 	}
+	/*
+	 *Comperable type
+	 *If the date of each object is between
+	 *the given range (start to end) 
+	 *@return TRUE 
+	 *else
+	 *@return FALSE
+	 * */
 	@Override
 	public boolean comperable() {
 		try {
@@ -53,7 +72,10 @@ public class FilterByDate extends Filter{
 			return false;
 		}
 	}
-	
+	/*
+	 * Filtered database
+	 * @return List<Network>
+	 */
 	@Override
 	public List<Network> getFilteredFile() {
 		return this.filteredFile;

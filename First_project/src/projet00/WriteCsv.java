@@ -27,7 +27,6 @@ public class WriteCsv implements Write{
 	 *
 	 * @author adiel ,adi and yuda
 	 * @param csvList the csv list
-	 * @return csv file
 	 * @throws IndexOutOfBoundsException the index out of bounds exception
 	 */
 	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException  {

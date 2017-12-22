@@ -54,11 +54,11 @@ public class Network {
 	/**
 	 * Instantiates a new network.
 	 * @author adiel ,adi and yuda
-	 * @param String n mac
-	 * @param Int signal
-	 * @param String lat
-	 * @param String lon
-	 * @param String alt
+	 * @param nmac
+	 * @param nsignal
+	 * @param nlat
+	 * @param nlon
+	 * @param nalt
 	 */
 	public Network(String nMac, double nLat, double nLon, double nAlt) {
 		this.mac = (!nMac.equals(null)) ? nMac: "NaN";

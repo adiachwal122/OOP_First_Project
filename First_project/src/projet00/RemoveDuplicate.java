@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RemoveDuplicate extends Filter{
-	/** The file*/
+	/*The file*/
 	protected List<List<Network>> file;
 	/*The final database*/
 	protected List<Network> filteredFile;

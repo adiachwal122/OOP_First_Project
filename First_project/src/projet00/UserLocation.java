@@ -10,29 +10,45 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
-
+/*User location revaluation -
+ * Get from the user list which filtered by three MACs addresses,
+ * and calculate Weighted Center of every MAC,
+ * then calculate the position of the user according
+ * to Weighted Center of each one
+ */
 public class UserLocation {
 	/*Database - from user*/
 	private List<Network> database;
 	/*Filtered database by strongest signal*/
 	private List<Network> filteredDatbase;
-	
+	/*Database of PI for each Network point*/
 	HashMap<Network, Double> piMap;
-	
+	/* Constructor
+	 * @param List<Network>  database (filtered by three MACs)
+	 * */
 	public UserLocation(List<Network> file) {
 		this.database = sort(file);
 		this.filteredDatbase = new ArrayList<>();
 		this.piMap = new HashMap<>();
 	}
-	
+	/*Calculate Weighted Center of every MAC
+	 * then calculate the position of the user according
+	 * to MACs addresses and the signel of each one
+	 * @param String MAC_1 
+	 * @param Integer signal_1 
+	 * @param String MAC_2 
+	 * @param Integer signal_2 
+	 * @param String MAC_3
+	 * @param Integer signal_3
+	 * @return Network (weighted center point)
+	 * */
 	public Network WeightedCenter(String MAC_1, int signal_1, String MAC_2, int signal_2, String MAC_3,int signal_3) {
+		/*Hsa map of given MAC and signal øespectively*/
 		HashMap<String, Integer> userMAC = new HashMap<>();
 		userMAC.put(MAC_1, signal_1);
 		userMAC.put(MAC_2, signal_2);
 		userMAC.put(MAC_3, signal_3);
-		
+		/*List of filtered by given MACs*/
 		List<List<Network>> listOfMAC = getOrder();
 		listOfMAC = threeNetwork(listOfMAC,new String[] {MAC_1, MAC_2, MAC_3});
 		Network temp;
@@ -53,15 +69,29 @@ public class UserLocation {
 		WifiSpotLocation totalWeightCenter = new WifiSpotLocation(filteredDatbase);
 		return totalWeightCenter.WeightedAverage();
 	}
-	
+	/*Calculate difference between point signal to input signal*/
 	private double diff(Network point , double input) {
 		return (point.getSignal()== 0)? 100 : Math.max(Math.abs(input - point.getSignal()), 3);
 	}
-	
+	/*Calculate wieght of each Network point*/
 	private double weight(double diff, double input) {
 		return 10_000/(Math.pow(diff, 0.4) * Math.pow(input, 0.4));
 	}
-	
+
+	/**
+	 * Returns the k rows with the highest signal values.
+	 * Implemented using Streams.
+	 * https://github.com/erelsgl/ariel-oop-course/blob/master/YomHamishi/src/lesson7/WifiDatabase.java
+	 */
+	private List<Network> strongestSignal(int k) {
+		return filteredDatbase
+			.stream()
+			.parallel()
+			.sorted(Comparator.comparing(net -> piMap.get(net)))
+			.limit(k)
+			.collect(Collectors.toList());
+	} 
+	/*Sort List<Network> by date*/
 	private List<Network> sort(List<Network> file){
 		//Sort by Date
 			Collections.sort(database,new Comparator<Network>() {
@@ -83,20 +113,7 @@ public class UserLocation {
 			});
 			return database;
 	}
-	/**
-	 * Returns the k rows with the highest signal values.
-	 * Implemented using Streams.
-	 * https://github.com/erelsgl/ariel-oop-course/blob/master/YomHamishi/src/lesson7/WifiDatabase.java
-	 */
-	private List<Network> strongestSignal(int k) {
-		return filteredDatbase
-			.stream()
-			.parallel()
-			.sorted(Comparator.comparing(net -> piMap.get(net)))
-			.limit(k)
-			.collect(Collectors.toList());
-	} 
-	
+	/*Sort List<List<Network>> by date*/
 	private List<List<Network>> getOrder(){
 		List<List<Network>> listOfMAC = new ArrayList<>();
 		List<Network> tempList= new ArrayList<>();

@@ -15,7 +15,7 @@ import de.micromata.opengis.kml.v_2_2_0.Placemark;
  * return KML file for Google Earth
  */
 public class WriteKml implements Write{
-	List<Network> listOfNet;
+	List<List<Network>> listOfNet;
 	/**
 	 * Instantiates a new write kml.
 	 */
@@ -30,9 +30,8 @@ public class WriteKml implements Write{
 	 * @param keyIndex 
 	 * {@link https://labs.micromata.de/projects/jak/kml-in-the-java-world.html}
 	 */
-	public WriteKml(List<Network> kmlList){
+	public WriteKml(List<List<Network>> kmlList){
 		this.listOfNet = kmlList;
-		System.out.println(write());
 	}
 	/*Convert date from String to TimeStame Signature
 	 * @param String time
@@ -53,30 +52,24 @@ public class WriteKml implements Write{
 			Date timeDate = new Date();
 			final Kml writekml = new Kml();
 			Document document = writekml.createAndSetDocument();
-			for (Network wifiSpot : listOfNet) {
-				Placemark placemark = document.createAndAddPlacemark()
-					.withName(wifiSpot.getSsid()).withOpen(Boolean.TRUE);
-				placemark.withId(wifiSpot.getId()).withDescription("MAC: " + wifiSpot.getMac() +
-							"\nFrequncy: " + wifiSpot.getFrequncy() + 
-							"\nSignal: " + wifiSpot.getSignal())
-				.createAndSetPoint().addToCoordinates(wifiSpot.getLon()
-													, wifiSpot.getLat() 
-													,wifiSpot.getAlt());
-				placemark.createAndSetTimeStamp().withWhen(timeStampFormate(wifiSpot.getTime()));			
-
+			for (List<Network> list : listOfNet) {	
+				for (Network wifiSpot : list) {
+					Placemark placemark = document.createAndAddPlacemark()
+						.withName(wifiSpot.getSsid()).withOpen(Boolean.TRUE);
+					placemark.withId(wifiSpot.getId()).withDescription("MAC: " + wifiSpot.getMac() +
+								"\nFrequncy: " + wifiSpot.getFrequncy() + 
+								"\nSignal: " + wifiSpot.getSignal())
+					.createAndSetPoint().addToCoordinates(wifiSpot.getLon()
+														, wifiSpot.getLat() 
+														,wifiSpot.getAlt());
+					placemark.createAndSetTimeStamp().withWhen(timeStampFormate(wifiSpot.getTime()));			
+	
+				}
 			}
 			writekml.marshal(new File("KmlFile - " + timeDate.getTime() + ".kml"));
 			return "Kml created!!";
 		} catch (FileNotFoundException | NullPointerException e) {
 			return e.getMessage();
 		}
-	}
-
-	/**
-	 * Unauthorized file.
-	 */
-	//Check if file type is unauthorized 
-	public void unauthorizedFile(String unauthorizedFile) {
-		System.err.println(unauthorizedFile+" - " +"Unauthorized File, please change the file to authorized file (Authorize csv)!"); 
 	}
 }

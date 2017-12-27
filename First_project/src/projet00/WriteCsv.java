@@ -31,7 +31,6 @@ public class WriteCsv implements Write{
 	 */
 	public WriteCsv(List<List<Network>> csvList) throws IndexOutOfBoundsException  {
 		this._fileTable = csvList;
-		write();
 	}
 	
 	@Override

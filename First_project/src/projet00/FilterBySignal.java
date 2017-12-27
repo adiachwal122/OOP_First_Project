@@ -1,16 +1,16 @@
 package projet00;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilterBySignal extends Filter{
-	/** The file. */
-	protected List<List<Network>> file;
-	/*The final database*/
-	protected List<Network> filteredFile;
+	/** The file. The final database*/
+	protected List<List<Network>> file, filteredFile;
 	/*Network object*/
 	protected Network wifiSpot;
 	/*Parameter from user*/
 	private String from , till;
+	private int size=0;
 	/**
 	 * Instantiates a new filter by signal.
 	 *
@@ -21,10 +21,9 @@ public class FilterBySignal extends Filter{
 	 */
 	public FilterBySignal(List<List<Network>> csvList ,String from , String till) {
 		this.file = csvList;
-		this.filteredFile = null;
+		this.filteredFile = new ArrayList<>();
 		this.from = from;
 		this.till = till;
-		System.out.println(filter());
 	}
 	/*
 	 *After constract Filter by Signal, run filter function 
@@ -32,14 +31,20 @@ public class FilterBySignal extends Filter{
 	 */
 	@Override
 	public String filter() {
+		List<Network> tempList = new ArrayList<>();
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
 					for (Network network : runList) {
 						wifiSpot = network;
 						if(comperable()) {
-							this.filteredFile.add(network);
+							tempList.add(network);
 						}
+					}
+					if(tempList.size() >=1) {
+						size += tempList.size();
+						this.filteredFile.add(tempList);
+						tempList.clear();
 					}
 				}	
 			}
@@ -65,7 +70,10 @@ public class FilterBySignal extends Filter{
 	 * @return List<Network>
 	 */
 	@Override
-	public List<Network> getFilteredFile() {
+	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
+	}
+	public int getSize() {
+		return size;
 	}
 }

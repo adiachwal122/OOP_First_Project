@@ -18,16 +18,18 @@ import java.util.stream.Collectors;
  */
 public class UserLocation {
 	/*Database - from user*/
-	private List<Network> database;
+	private List<List<Network>> database;
 	/*Filtered database by strongest signal*/
 	private List<Network> filteredDatbase;
+	/*List of filtered wifi network*/
+	private List<Network> data = new ArrayList<>();
 	/*Database of PI for each Network point*/
 	HashMap<Network, Double> piMap;
 	/* Constructor
 	 * @param List<Network>  database (filtered by three MACs)
 	 * */
-	public UserLocation(List<Network> file) {
-		this.database = sort(file);
+	public UserLocation(List<List<Network>> file) {
+		this.database = file;
 		this.filteredDatbase = new ArrayList<>();
 		this.piMap = new HashMap<>();
 	}
@@ -48,6 +50,7 @@ public class UserLocation {
 		userMAC.put(MAC_1, signal_1);
 		userMAC.put(MAC_2, signal_2);
 		userMAC.put(MAC_3, signal_3);
+		sort(database);
 		/*List of filtered by given MACs*/
 		List<List<Network>> listOfMAC = getOrder();
 		listOfMAC = threeNetwork(listOfMAC,new String[] {MAC_1, MAC_2, MAC_3});
@@ -66,7 +69,9 @@ public class UserLocation {
 			}
 		}
 		if(filteredDatbase.size()>3) filteredDatbase = strongestSignal(3);
-		WifiSpotLocation totalWeightCenter = new WifiSpotLocation(filteredDatbase);
+		List<List<Network>> templist = new ArrayList<>();
+		templist.add(filteredDatbase);
+		WifiSpotLocation totalWeightCenter = new WifiSpotLocation(templist);
 		return totalWeightCenter.WeightedAverage();
 	}
 	/*Calculate difference between point signal to input signal*/
@@ -92,9 +97,14 @@ public class UserLocation {
 			.collect(Collectors.toList());
 	} 
 	/*Sort List<Network> by date*/
-	private List<Network> sort(List<Network> file){
+	private List<Network> sort(List<List<Network>> file){
+		for (List<Network> list : database) {
+			for (Network network : list) {
+				data.add(network);
+			}
+		}
 		//Sort by Date
-			Collections.sort(database,new Comparator<Network>() {
+			Collections.sort(data,new Comparator<Network>() {
 				public int compare(Network wifiLine1, Network wifiLine2) {
 					try {
 						DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -111,14 +121,14 @@ public class UserLocation {
 					}
 				}
 			});
-			return database;
+			return data;
 	}
 	/*Sort List<List<Network>> by date*/
 	private List<List<Network>> getOrder(){
 		List<List<Network>> listOfMAC = new ArrayList<>();
 		List<Network> tempList= new ArrayList<>();
-		String time = database.get(0).getTime();
-		for (Network network : database) {
+		String time = data.get(0).getTime();
+		for (Network network : data) {
 			if(network.getTime().equals(time)) {
 				tempList.add(network);
 			}else {

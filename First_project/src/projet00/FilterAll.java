@@ -1,14 +1,14 @@
 package projet00;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilterAll extends Filter{
-	/** The file. */
-	protected List<List<Network>> file;
-	/*The final database*/
-	protected List<Network> filteredFile;
+	/** The file. The final database*/
+	protected List<List<Network>> file, filteredFile;	
 	/*Network object*/
 	protected Network wifiSpot;
+	private int size=0;
 	/**
 	 * Instantiates a new filter by SSID.
 	 *
@@ -17,7 +17,7 @@ public class FilterAll extends Filter{
 	 */
 	public FilterAll(List<List<Network>> csvList) {
 		this.file = csvList;
-		this.filteredFile = null;
+		this.filteredFile = new ArrayList<>();
 	}
 	/*
 	 *After constract Filter by ID, run filter function 
@@ -25,14 +25,20 @@ public class FilterAll extends Filter{
 	 */
 	@Override
 	public String filter() {
+		List<Network> tempList = new ArrayList<>();
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
 					for (Network network : runList) {
 						wifiSpot = network;
 						if(comperable()) {
-							this.filteredFile.add(network);
+							tempList.add(network);
 						}
+					}
+					if(tempList.size() >=1) {
+						size += tempList.size();
+						this.filteredFile.add(tempList);
+						tempList.clear();
 					}
 				}	
 			}
@@ -54,7 +60,10 @@ public class FilterAll extends Filter{
 	 * @return List<Network>
 	 */
 	@Override
-	public List<Network> getFilteredFile() {
+	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
+	}
+	public int getSize() {
+		return size;
 	}
 }

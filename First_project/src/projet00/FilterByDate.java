@@ -3,18 +3,18 @@ package projet00;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class FilterByDate extends Filter{
-	/** The file. */
-	protected List<List<Network>> file;
-	/*The final database*/
-	protected List<Network> filteredFile;
+	/** The file. The final database*/
+	protected List<List<Network>> file, filteredFile;
 	/*Network object*/
 	protected Network wifiSpot;
 	/*Parameter from user*/
 	private String start , end;
+	private int size=0;
 	/**
 	 * Instantiates a new filter by Date.
 	 *
@@ -24,7 +24,8 @@ public class FilterByDate extends Filter{
 	 * @param end
 	 */
 	public FilterByDate(List<List<Network>> csvList , String start , String end) {
-		super();
+		this.file = csvList; 
+		this.filteredFile = new ArrayList<>();
 		this.start = start;
 		this.end = end;
 	}
@@ -34,14 +35,20 @@ public class FilterByDate extends Filter{
 	 */
 	@Override
 	public String filter() {
+		List<Network> tempList = new ArrayList<>();
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
 					for (Network network : runList) {
 						wifiSpot = network;
 						if(comperable()) {
-							this.filteredFile.add(network);
+							tempList.add(network);
 						}
+					}
+					if(tempList.size() >=1) {
+						size += tempList.size();
+						this.filteredFile.add(tempList);
+						tempList.clear();
 					}
 				}	
 			}
@@ -77,7 +84,10 @@ public class FilterByDate extends Filter{
 	 * @return List<Network>
 	 */
 	@Override
-	public List<Network> getFilteredFile() {
+	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
+	}
+	public int getSize() {
+		return size;
 	}
 }

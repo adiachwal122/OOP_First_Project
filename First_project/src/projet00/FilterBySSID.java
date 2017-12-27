@@ -1,16 +1,16 @@
 package projet00;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilterBySSID  extends Filter{
-	/** The file. */
-	protected List<List<Network>> file;
-	/*The final database*/
-	protected List<Network> filteredFile;
+	/** The file. The final database*/
+	protected List<List<Network>> file, filteredFile;
 	/*Network object*/
 	protected Network wifiSpot;
 	/*Parameter from user*/
 	private String parameter;
+	private int size=0;
 	/**
 	 * Instantiates a new filter by SSID.
 	 *
@@ -20,9 +20,8 @@ public class FilterBySSID  extends Filter{
 	 */
 	public FilterBySSID(List<List<Network>> csvList ,String parameter) {
 		this.file = csvList;
-		this.filteredFile = null;
+		this.filteredFile = new ArrayList<>();
 		this.parameter = parameter;
-		filter();
 	}
 	/*
 	 *After constract Filter by ID, run filter function 
@@ -30,14 +29,20 @@ public class FilterBySSID  extends Filter{
 	 */
 	@Override
 	public String filter() {
+		List<Network> tempList = new ArrayList<>();
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
 					for (Network network : runList) {
 						wifiSpot = network;
 						if(comperable()) {
-							this.filteredFile.add(network);
+							tempList.add(network);
 						}
+					}
+					if(tempList.size() >=1) {
+						size += tempList.size();
+						this.filteredFile.add(tempList);
+						tempList.clear();
 					}
 				}	
 			}
@@ -63,7 +68,10 @@ public class FilterBySSID  extends Filter{
 	 * @return List<Network>
 	 */
 	@Override
-	public List<Network> getFilteredFile() {
+	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
+	}
+	public int getSize() {
+		return size;
 	}
 }

@@ -29,8 +29,8 @@ public class ReadCsv {
 	/*Csv database*/
 	private List<List<Network>> database = new ArrayList<List<Network>>();
 	/*Object of type Network*/
-
 	private Network wifiObj;
+	private String pathToFileOrFolder;
 
 	/**
 	 * Instantiates a new read csv.
@@ -45,17 +45,23 @@ public class ReadCsv {
 	 *
 	 * @author adiel, adi and yuda
 	 * @param path
+	 */
+	public ReadCsv(String path) {
+		this.pathToFileOrFolder = path;
+	}
+	/**
+	 * @author adiel, adi and yuda
 	 * {@link} https://www.tutorialspoint.com/java/io/file_listfiles.htm
 	 * {@link} http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public ReadCsv(String path) throws IOException {
+	public void read() throws IOException {
 		try {
 			/**
 			 * Read all file from path
 			 * Function copy from https://stackoverflow.com/questions/1844688/how-to-read-all-files-in-a-folder-from-java 
 			 **/
-			List<File> filesInFolder = Files.walk(Paths.get(path))
+			List<File> filesInFolder = Files.walk(Paths.get(pathToFileOrFolder))
 					.filter(Files::isRegularFile)
 					.map(Path::toFile)
 					.collect(Collectors.toList());
@@ -207,8 +213,6 @@ public class ReadCsv {
 					}
 				});
 				}
-			//			System.out.println(this._fileTable.toString());
-
 			//Max of 10 element in each sublist
 			for (List<Network> net : fileTable) {
 				if(net.size() > 10) {

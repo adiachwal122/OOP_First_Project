@@ -20,6 +20,7 @@ public class ReadCsvTest {
 		String file = "28.10" ;
 		try {
 			ReadCsv a = new ReadCsv(file);
+			a.read();
 			assertEquals(23, a.getDatabase().size());
 		}
 		catch (IOException e1) {
@@ -38,7 +39,7 @@ public class ReadCsvTest {
 		String file = "28.10\\WigleWifi_20171028203300.csv" ;
 		try {
 			ReadCsv a = new ReadCsv(file);
-			
+			a.read();
 			assertEquals("CSV", a.fileType(file));
 		}
 		catch (IOException e1) {

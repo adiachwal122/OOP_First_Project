@@ -33,6 +33,7 @@ public class RemoveDuplicate extends Filter{
 						wifiSpot = network;
 						if(comperable()) {
 							tempList.add(network);
+							keyOfMAC.put(network.getMac(), 1);
 						}
 					}
 					if(tempList.size() >=1) {
@@ -60,6 +61,6 @@ public class RemoveDuplicate extends Filter{
 		return this.filteredFile;
 	}
 	public int getSize() {
-		return size;
+		return this.size;
 	}
 }

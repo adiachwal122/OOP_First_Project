@@ -55,19 +55,8 @@ public class WriteCsv implements Write{
 			//Write to file
 			if(this._fileTable.size() != 0) {
 				for (List<Network> runList: this._fileTable) {
-<<<<<<< HEAD
 					if(runList.size() >= 1) {
 						makeFile.write(runList.get(0).getTime() + " , " + runList.get(0).getId() + " , "
-=======
-					int count = 0;
-					if(!runList.isEmpty()) {
-						if(runList.size() > 10) {
-							makeFile.write(runList.get(0).getTime() + " , " + runList.get(0).getId() + " , "
-									+runList.get(0).getLat() + " , " + runList.get(0).getLon() + " , "
-									+ runList.get(0).getAlt() + " , " + 10);
-						}else {
-							makeFile.write(runList.get(0).getTime() + " , " + runList.get(0).getId() + " , "
->>>>>>> refs/remotes/origin/master
 									+runList.get(0).getLat() + " , " + runList.get(0).getLon() + " , "
 									+ runList.get(0).getAlt() + " , " + runList.size());
 						for (Network network : runList) {
@@ -87,12 +76,8 @@ public class WriteCsv implements Write{
 				}
 			
 		}catch(IndexOutOfBoundsException | IOException | NullPointerException e) {
-<<<<<<< HEAD
-			return  "Sorry, somethings went wrong! \nPlease check if your file is corrupted" + e.getCause();
-=======
 			e.printStackTrace();
-			System.out.println("Sorry, somethings went wrong! \nPlease check if your file is corrupted");
->>>>>>> refs/remotes/origin/master
+			return "Sorry, somethings went wrong! \nPlease check if your file is corrupted";
 		}
 	}
 	/*Get list of csv file*/

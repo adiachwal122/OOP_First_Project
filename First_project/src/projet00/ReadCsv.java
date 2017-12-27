@@ -26,13 +26,10 @@ import static java.nio.file.StandardCopyOption.*;
  * This class gets csv file from WiggleWif only (path to file or folder)
  */
 public class ReadCsv {
-<<<<<<< HEAD
 	/*Csv database*/
 	private List<List<Network>> database = new ArrayList<List<Network>>();
 	/*Object of type Network*/
-=======
-	private List<List<Network>> _fileTable = new ArrayList<List<Network>>();;
->>>>>>> refs/remotes/origin/master
+
 	private Network wifiObj;
 
 	/**
@@ -66,14 +63,8 @@ public class ReadCsv {
 			//Folder is empty
 			if(filesInFolder.isEmpty()) System.err.println("Folder is empty!");
 
-<<<<<<< HEAD
 			//read all file in folder
 			else while(!filesInFolder.isEmpty()) {
-=======
-			//show all file in folder or read file
-			else if (filesInFolder.size()> 1) {
-				while(!filesInFolder.isEmpty()) {
->>>>>>> refs/remotes/origin/master
 					System.out.println(filesInFolder.get(0).getName());
 					String typeOfFile = fileType(filesInFolder.get(0).getName());
 					String pathOfEachFile = filesInFolder.get(0).getPath();
@@ -122,10 +113,7 @@ public class ReadCsv {
 			FileReader readFile = new FileReader(path);
 			BufferedReader fileOpen = new BufferedReader(readFile);
 			String model = "NaN" , stop = null;
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 			//Temp list
 			List<Network> line_of_table = new ArrayList<Network>();
 			//Unsorted list
@@ -157,11 +145,7 @@ public class ReadCsv {
 			}
 
 			stop = fileOpen.readLine();
-<<<<<<< HEAD
 			if(stop != null) orFile = stop.split(",");
-=======
-			if(stop != null) orFile = stop.split(",");	
->>>>>>> refs/remotes/origin/master
 			
 			//Create table
 			while(stop != null) {

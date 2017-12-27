@@ -52,7 +52,7 @@ public class ReadCsvForTest {
 				}
 				this.database.add(data);
 				readLine = fileOpen.readLine().split(",");
-			}while(readLine == null);
+			}while(readLine != null);
 			fileOpen.close();
 			return "File has been readed successfully!";	
 		}catch(IOException|NullPointerException e) {

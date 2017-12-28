@@ -71,6 +71,18 @@ public class Network {
 		this.signal = 0;
 		this.time = "dd/MM/yyyy HH:mm:ss";
 	}
+	public Network(Network other) {
+		this.mac = (!other.getMac().equals(null)) ? other.getMac(): "NaN";
+		this.ssid = (!other.getSsid().equals(null)) ? other.getSsid():"NaN";
+		this.frequncy = (other.getFrequncy() != 0) ? other.getFrequncy():0;
+		this.signal = (other.getSignal() != 0) ? other.getSignal():0;
+		// dd/MM/yyyy HH:mm:ss
+		this.time = (!other.getTime().equals(null)) ? other.getTime():"01//01//1000 00:00:00";
+		this.id = (!other.getId().equals(null)) ? other.getId():"NaN";
+		this.lat = (other.getLat() != 0) ? other.getLat():0;
+		this.lon = (other.getLon() != 0) ? other.getLon():0;
+		this.alt = (other.getAlt() != 0) ? other.getAlt():0;
+	}
 	/**
 	 * Gets the id.
 	 *

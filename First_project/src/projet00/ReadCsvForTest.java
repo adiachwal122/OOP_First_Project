@@ -9,9 +9,10 @@ import java.util.List;
 
 public class ReadCsvForTest {
 	private String path;
-	private List<List<Network>> database = new ArrayList<>();
+	private List<List<Network>> database;
 	
 	public ReadCsvForTest(String pathToFile) {
+		this.database = new ArrayList<>();
 		this.path=pathToFile;
 	}
 
@@ -28,18 +29,21 @@ public class ReadCsvForTest {
 			keyIndex.put("Lat",2);
 			keyIndex.put("Lon",3);
 			keyIndex.put("Alt",4);
-			keyIndex.put("WiFi networks",5 );
+			keyIndex.put("WiFi networks",5);
 			keyIndex.put("SSID",6);
 			keyIndex.put("MAC",7);
 			keyIndex.put("Frequncy",8);
 			keyIndex.put("Signal",9);
 			
-			List<Network> data = new ArrayList<>();
-			String[] readLine = fileOpen.readLine().split(",");
+			List<Network> data;
+			String[] readLine;
 			do {
+				data = new ArrayList<>();
+				readLine = fileOpen.readLine().split(",");
+				int numberOfPoint = Integer.parseInt(readLine[5].trim());
 				Network point;
-				for (int i = 0; i < Integer.parseInt(readLine[keyIndex.get("WiFi networks")]); i++) {
-				point = new Network(readLine[keyIndex.get("SSID")+1*4],
+				for (int i = 0; i < numberOfPoint; i++) {
+				point = new Network(readLine[keyIndex.get("SSID")+i*4],
 						readLine[keyIndex.get("MAC")+i*4], 
 						Integer.parseInt(readLine[keyIndex.get("Frequncy")+i*4]), 
 						Integer.parseInt(readLine[keyIndex.get("Signal")+i*4]), 
@@ -51,13 +55,14 @@ public class ReadCsvForTest {
 				data.add(point);
 				}
 				this.database.add(data);
-				readLine = fileOpen.readLine().split(",");
-			}while(readLine != null);
+				
+			}while((readLine != null)&&(fileOpen.ready()));
 			fileOpen.close();
-			return "File has been readed successfully!";	
+			return "File has been readed successfully!";
 		}catch(IOException|NullPointerException e) {
-			e.getStackTrace();
-			return path +" - Error while reading";
+			e.printStackTrace();
+			return path + "Error while reading";
+			
 		}
 	}
 	public List<List<Network>> getDatabase() {

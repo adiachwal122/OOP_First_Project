@@ -18,7 +18,8 @@ public class RemoveDuplicate extends Filter{
 	 * @param List<List<Network>> List
 	 *  */
 	public RemoveDuplicate(List<List<Network>> csvList) {
-		this.file = csvList;
+		this.file = new ArrayList<>();
+		file.addAll(csvList);
 		this.filteredFile = new ArrayList<>();
 		keyOfMAC = new HashMap<>();
 	}
@@ -30,30 +31,31 @@ public class RemoveDuplicate extends Filter{
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
 					for (Network network : runList) {
+						wifiSpot = new Network();
 						wifiSpot = network;
 						if(comperable()) {
-							tempList.add(network);
-							keyOfMAC.put(network.getMac(), 1);
+							tempList.add(wifiSpot);
+							keyOfMAC.put(wifiSpot.getMac(), 1);
 						}
 					}
 					if(tempList.size() >=1) {
 						size += tempList.size();
 						this.filteredFile.add(tempList);
-						tempList.clear();
+						tempList = new ArrayList<>();
 					}
 				}	
 			}
-			return "Filtered Succeed!";
+			return "Remove duplicate Filtered Succeed!";
 		}else {
 			return "Database is empty!";
-			}
+		}
 	}
 
 	@Override
 	public boolean comperable() {
 		if(keyOfMAC.isEmpty()||!keyOfMAC.containsKey(wifiSpot.getMac())) return true;
 		else return false;
-		
+
 	}
 
 	@Override

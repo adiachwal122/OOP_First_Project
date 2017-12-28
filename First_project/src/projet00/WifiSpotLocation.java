@@ -13,6 +13,7 @@ public class WifiSpotLocation {
 	private List<List<Network>> database;
 	/*List of filtered wifi network*/
 	private List<Network> data = new ArrayList<>();
+	Network wcenter;
 
 	/*
 	 * Constructor
@@ -20,6 +21,8 @@ public class WifiSpotLocation {
 	 * */
 	public WifiSpotLocation(List<List<Network>> macFiltered) {
 		this.database = macFiltered;
+		System.out.println(database.get(0).toString());
+		
 	}
 	/*Get weighted average cordinate of specific Network*/
 	public Network WeightedAverage() {
@@ -50,7 +53,8 @@ public class WifiSpotLocation {
 			avgLon /= wieght;
 			avgLat /= wieght;
 			/*Get Network element*/
-			return new Network(data.get(0).getMac(), avgLat, avgLon, avgAlt);
+			wcenter = new Network(data.get(0).getMac(), avgLat, avgLon, avgAlt);
+			return wcenter;
 		}catch (ArithmeticException ex) {
 			ex.printStackTrace();
 			return new Network();
@@ -89,6 +93,6 @@ public class WifiSpotLocation {
 }
 	@Override
 	public String toString() {
-		return "Wifi Spot Location [Weighted Average = " + WeightedAverage() + "]";
+		return "Wifi Spot Location [Weighted Average = " + wcenter.toString() + "]";
 	}
 }

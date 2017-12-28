@@ -19,7 +19,8 @@ public class FilterByMAC extends Filter{
 	 * @param parameter
 	 */
 	public FilterByMAC(List<List<Network>> csvList ,String parameter) {
-		this.file = csvList;
+		file = new ArrayList<>();
+		this.file.addAll(csvList);
 		this.filteredFile = new ArrayList<>();
 		this.parameter = parameter;
 	}
@@ -29,26 +30,26 @@ public class FilterByMAC extends Filter{
 	 */
 	@Override
 	public String filter() {
-		List<Network> tempList = new ArrayList<>();
+		List<Network> tempList;
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
+					tempList = new ArrayList<>();
 					for (Network network : runList) {
-						wifiSpot = network;
+						wifiSpot = new Network(network);
 						if(comperable()) {
-							tempList.add(network);
+							tempList.add(wifiSpot);
 						}
 					}
 					if(tempList.size() >=1) {
 						size += tempList.size();
 						this.filteredFile.add(tempList);
-						tempList.clear();
 					}
 				}	
 			}
-			return "Filtered Succeed!";
+			return "MAC Filtered Succeed!";
 		}else {
-			return "Database is empty!";
+			return "MAC Filtered - Database is empty!";
 			}
 	}
 	/*

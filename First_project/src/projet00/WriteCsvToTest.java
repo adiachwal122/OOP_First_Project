@@ -3,6 +3,7 @@ package projet00;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,8 @@ public class WriteCsvToTest implements Write{
 	private List<List<Network>> database;
 	private int size;
 	public WriteCsvToTest(List<List<Network>> data) {
-		this.database = data;
+		database = new ArrayList<>();
+		this.database.addAll(data);
 	}
 
 	@Override

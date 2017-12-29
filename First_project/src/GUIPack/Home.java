@@ -6,19 +6,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.border.BevelBorder;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class Home extends JFrame {
 
@@ -27,8 +29,7 @@ public class Home extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
-
+	private JPanel upload;
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +59,11 @@ public class Home extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+
+		upload = new JPanel();
+		upload.setBounds(100, 100, 630, 421);
+		upload.setVisible(false);
 		
 		JLabel lblKmlToCsv = new JLabel("KML to CSV");
 		lblKmlToCsv.setBounds(42, 40, 170, 43);
@@ -96,16 +102,17 @@ public class Home extends JFrame {
 		panel.add(Earth_logo);
 		Earth_logo.setIcon(new ImageIcon(Home.class.getResource("/GUIPack/images/sky-earth-galaxy-universe.jpg")));
 		
-		Button button = new Button("Upload Wiggle Wifi CSV");
-		button.setForeground(new Color(255, 255, 255));
-		button.setBackground(new Color(0, 0, 51));
-		button.setFont(new Font("Calibri", Font.PLAIN, 12));
-		button.addActionListener(new ActionListener() {
+		Button upload_button = new Button("Upload Wiggle Wifi CSV");
+		upload_button.setForeground(new Color(255, 255, 255));
+		upload_button.setBackground(new Color(0, 0, 51));
+		upload_button.setFont(new Font("Calibri", Font.PLAIN, 12));
+		upload_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				uploadfile();
 			}
 		});
-		button.setBounds(444, 179, 219, 44);
-		contentPane.add(button);
+		upload_button.setBounds(444, 179, 219, 44);
+		contentPane.add(upload_button);
 		
 		Button Instraction_Button = new Button("Instraction");
 		Instraction_Button.setForeground(Color.WHITE);
@@ -114,35 +121,40 @@ public class Home extends JFrame {
 		Instraction_Button.setBounds(444, 229, 219, 44);
 		contentPane.add(Instraction_Button);
 		
-		Button button_2 = new Button("Exit");
-		button_2.addActionListener(new ActionListener() {
+		Button exit_button = new Button("Exit");
+		exit_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		button_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			button_2.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to close the application?", "Exit" ,JOptionPane.YES_NO_OPTION);
-					switch (yesOrNo) {
-					case 0:
-						System.exit(0);
-						break;
+				int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to close the application?", "Exit" ,JOptionPane.YES_NO_OPTION);
+				switch (yesOrNo) {
+				case 0:
+					System.exit(0);
+					break;
 
-					default:
-						break;
-					}
+				default:
+					break;
 				}
-			});
 			}
 		});
-		button_2.setForeground(Color.WHITE);
-		button_2.setFont(new Font("Calibri", Font.PLAIN, 12));
-		button_2.setBackground(new Color(0, 0, 51));
-		button_2.setBounds(444, 279, 219, 44);
-		contentPane.add(button_2);
+		exit_button.setForeground(Color.WHITE);
+		exit_button.setFont(new Font("Calibri", Font.PLAIN, 12));
+		exit_button.setBackground(new Color(0, 0, 51));
+		exit_button.setBounds(444, 279, 219, 44);
+		contentPane.add(exit_button);
 	}
+	private void uploadfile() {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setFileFilter(new FileNameExtensionFilter("csv file only (.csv)","csv"));
+		fileChooser.setAcceptAllFileFilterUsed(false);
+		fileChooser.setMultiSelectionEnabled(false);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		getContentPane().add(fileChooser, BorderLayout.CENTER);
+		int result = fileChooser.showOpenDialog(upload);
+		 String path;
+		if (result == JFileChooser.APPROVE_OPTION) {
+		    File selectedFile = fileChooser.getSelectedFile();
+				    //path = selectedFile[1].getAbsolutePath();
+				    System.out.println("Selected file: " + selectedFile.toString());
+		}
+	}
+	
 }

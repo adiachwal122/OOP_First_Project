@@ -74,6 +74,7 @@ public class FilterByMAC extends Filter{
 	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
 	}
+	/*Gets number of elements after filter*/
 	public int getSize() {
 		return size;
 	}

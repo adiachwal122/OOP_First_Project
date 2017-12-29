@@ -52,6 +52,22 @@ public class ReadCsv {
 		this.pathToFileOrFolder = path;
 	}
 	/**
+	 * Adding more files of folders
+	 * @param path
+	 * @return 
+	 */
+	public String add(String path) {
+		try {
+			pathToFileOrFolder = path;
+			read();
+			return "Done - Adding successfully";
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "Done - Adding failure";
+		}
+		
+	}
+	/**
 	 * @author adiel, adi and yuda
 	 * {@link} https://www.tutorialspoint.com/java/io/file_listfiles.htm
 	 * {@link} http://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html

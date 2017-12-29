@@ -23,7 +23,8 @@ public class FilterByThreeMACs extends Filter{
 	 * @param parameter_3
 	 */
 	public FilterByThreeMACs(List<List<Network>> csvList ,String parameter_1 ,String parameter_2 ,String parameter_3) {
-		this.file = csvList;
+		this.file = new ArrayList<>();
+		file.addAll(csvList);
 		this.filteredFile = new ArrayList<>();
 		this.parameter_1 = parameter_1;
 		this.parameter_2 = parameter_2;
@@ -39,8 +40,9 @@ public class FilterByThreeMACs extends Filter{
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
+					tempList = new ArrayList<>();
 					for (Network network : runList) {
-						wifiSpot = network;
+						wifiSpot = new Network(network);
 						if(comperable()) {
 							tempList.add(network);
 						}
@@ -48,7 +50,6 @@ public class FilterByThreeMACs extends Filter{
 					if(tempList.size() >=1) {
 						size += tempList.size();
 						this.filteredFile.add(tempList);
-						tempList.clear();
 					}
 				}	
 			}
@@ -79,6 +80,7 @@ public class FilterByThreeMACs extends Filter{
 	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
 	}
+	/*Gets number of elements after filter*/
 	public int getSize() {
 		return size;
 	}

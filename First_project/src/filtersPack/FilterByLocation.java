@@ -25,7 +25,7 @@ public class FilterByLocation extends Filter{
 	 * @param longitude
 	 */
 	public FilterByLocation(List<List<Network>> csvList ,double radius ,double latitude, double longitude) {
-		this.file = csvList;
+		this.file = new ArrayList<>(csvList);
 		this.filteredFile = new ArrayList<>();
 		this.radius = radius;
 		this.latitude = latitude;
@@ -41,8 +41,9 @@ public class FilterByLocation extends Filter{
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
+					tempList = new ArrayList<>();
 					for (Network network : runList) {
-						wifiSpot = network;
+						wifiSpot = new Network(network);
 						if(comperable()) {
 							tempList.add(network);
 						}
@@ -50,7 +51,6 @@ public class FilterByLocation extends Filter{
 					if(tempList.size() >=1) {
 						size += tempList.size();
 						this.filteredFile.add(tempList);
-						tempList.clear();
 					}
 				}	
 			}
@@ -88,6 +88,7 @@ public class FilterByLocation extends Filter{
 	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
 	}
+	/*Gets number of elements after filter*/
 	public int getSize() {
 		return size;
 	}

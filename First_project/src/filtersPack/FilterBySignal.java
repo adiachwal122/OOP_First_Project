@@ -22,7 +22,8 @@ public class FilterBySignal extends Filter{
 	 * @param till
 	 */
 	public FilterBySignal(List<List<Network>> csvList ,String from , String till) {
-		this.file = csvList;
+		this.file = new ArrayList<>();
+		file.addAll(csvList);
 		this.filteredFile = new ArrayList<>();
 		this.from = from;
 		this.till = till;
@@ -37,8 +38,9 @@ public class FilterBySignal extends Filter{
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
+					tempList = new ArrayList<>();
 					for (Network network : runList) {
-						wifiSpot = network;
+						wifiSpot = new Network(network);
 						if(comperable()) {
 							tempList.add(network);
 						}
@@ -46,7 +48,6 @@ public class FilterBySignal extends Filter{
 					if(tempList.size() >=1) {
 						size += tempList.size();
 						this.filteredFile.add(tempList);
-						tempList.clear();
 					}
 				}	
 			}
@@ -75,6 +76,7 @@ public class FilterBySignal extends Filter{
 	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
 	}
+	/*Gets number of elements after filter*/
 	public int getSize() {
 		return size;
 	}

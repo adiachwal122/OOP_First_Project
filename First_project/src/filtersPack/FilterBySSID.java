@@ -21,7 +21,8 @@ public class FilterBySSID  extends Filter{
 	 * @param parameter
 	 */
 	public FilterBySSID(List<List<Network>> csvList ,String parameter) {
-		this.file = csvList;
+		this.file = new ArrayList<>();
+		file.addAll(csvList);
 		this.filteredFile = new ArrayList<>();
 		this.parameter = parameter;
 	}
@@ -35,16 +36,16 @@ public class FilterBySSID  extends Filter{
 		if(!this.file.isEmpty()) {
 			for (List<Network> runList: this.file) {
 				if(runList.size() >= 1) {
+					tempList = new ArrayList<>();
 					for (Network network : runList) {
-						wifiSpot = network;
+						wifiSpot = new Network(network);
 						if(comperable()) {
 							tempList.add(network);
 						}
 					}
 					if(tempList.size() >=1) {
 						size += tempList.size();
-						this.filteredFile.add(tempList);
-						tempList.clear();
+						this.filteredFile.add(tempList);						
 					}
 				}	
 			}
@@ -73,6 +74,7 @@ public class FilterBySSID  extends Filter{
 	public List<List<Network>> getFilteredFile() {
 		return this.filteredFile;
 	}
+	/*Gets number of elements after filter*/
 	public int getSize() {
 		return size;
 	}

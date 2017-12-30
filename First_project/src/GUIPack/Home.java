@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -18,9 +19,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import readPack.ReadCsv;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 public class Home extends JFrame {
 
@@ -51,6 +56,8 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home() {
+		setTitle("KML for CSV");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/GUIPack/images/app-earth-icon.png")));
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 769, 440);
@@ -108,7 +115,11 @@ public class Home extends JFrame {
 		upload_button.setFont(new Font("Calibri", Font.PLAIN, 12));
 		upload_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				uploadfile();
+				try {
+					uploadfile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		upload_button.setBounds(444, 179, 219, 44);
@@ -141,7 +152,7 @@ public class Home extends JFrame {
 		exit_button.setBounds(444, 279, 219, 44);
 		contentPane.add(exit_button);
 	}
-	private void uploadfile() {
+	private void uploadfile() throws IOException {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileFilter(new FileNameExtensionFilter("csv file only (.csv)","csv"));
 		fileChooser.setAcceptAllFileFilterUsed(false);
@@ -149,11 +160,13 @@ public class Home extends JFrame {
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		getContentPane().add(fileChooser, BorderLayout.CENTER);
 		int result = fileChooser.showOpenDialog(upload);
-		 String path;
+		 String path="";
 		if (result == JFileChooser.APPROVE_OPTION) {
 		    File selectedFile = fileChooser.getSelectedFile();
-				    //path = selectedFile[1].getAbsolutePath();
-				    System.out.println("Selected file: " + selectedFile.toString());
+		    path = selectedFile.toString();
+		    System.out.println("Selected file: " + path);
+		    ReadCsv readFile= new ReadCsv(path);
+			readFile.read();
 		}
 	}
 	

@@ -3,12 +3,12 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry excluding="src/" kind="src" path=""/>
-	<classpathentry exported="true" kind="lib" path="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions/JavaAPIforKml-2.2.1.jar" sourcepath="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions"/>
-	<classpathentry exported="true" kind="lib" path="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions/JavaAPIforKml-2.2.1-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="F:/מדעי המחשב/סמסטר ג/מונחה עצמים/פרויקט/Extensions/JavaAPIforKml-2.2.1-javadoc.jar"/>
-	<classpathentry exported="true" kind="lib" path="/jaxb-impl-2.2-promoted-b65"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="Extensions/JavaAPIforKml-2.2.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="Extensions/JavaAPIforKml-2.2.1-sources.jar"/>
+	<classpathentry kind="lib" path="Extensions/JavaAPIforKml-2.2.1.jar"/>
+	<classpathentry kind="lib" path="Extensions/jaxb-impl-2.2-promoted-b65.zip"/>
+	<classpathentry kind="lib" path="Extensions/jgoodies-common-1.8.0.jar"/>
+	<classpathentry kind="lib" path="Extensions/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
